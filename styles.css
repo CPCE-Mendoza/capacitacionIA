@@ -1,0 +1,254 @@
+/* styles.css */
+
+/* Reset básico y estilos generales */
+body {
+    font-family: "Open Sans", sans-serif; /* O la fuente que elijas */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #000000; /* Negro para el texto principal */
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+.container {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto;  /* Centrar el contenido */
+    padding: 0 20px; /* Espacio a los lados */
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #337ab7; /* Azul oscuro/Morado */
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transición suave para el hover */
+}
+
+nav a:hover {
+    color: #48b8d0; /* Celeste/Turquesa al pasar el mouse */
+}
+
+/* Estilos de las secciones */
+section {
+    padding: 40px 0;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #337ab7;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #337ab7;
+}
+
+/* Estilos de las tarjetas de curso */
+.curso-container {
+    display: flex; /* Usamos Flexbox */
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten a la siguiente línea */
+    justify-content: space-around; /* Espacio entre las tarjetas */
+    gap: 20px; /* Espacio entre las tarjetas (más moderno que margin) */
+}
+
+.curso {
+    width: calc(50% - 20px); /*  Ancho para dos columnas, restando el gap  */
+    box-sizing: border-box; /*  Incluye el padding y border en el ancho total  */
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el hover */
+}
+
+.curso:hover {
+    transform: translateY(-5px); /* Elevar ligeramente la tarjeta */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* Estilos de los videos */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilos de los botones */
+/* Usamos variables CSS para los colores del botón */
+:root {
+  --boton-color: #ff8c00;
+  --boton-hover-color: #e07900; /* Color más oscuro para el hover */
+  /* O, usando color-mix (más avanzado, pero recomendado): */
+  /* --boton-hover-color: color-mix(in srgb, var(--boton-color) 80%, black); */
+}
+
+
+.btn {
+    background-color: var(--boton-color);
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Quita el subrayado si es un enlace */
+    display: inline-block; /* Permite ajustar el padding */
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--boton-hover-color);
+}
+
+/* Estilos del pie de página (versión mejorada) */
+footer {
+    background-color: #edeef0;  /* Mismo color de fondo */
+    padding: 30px 0; /*  Padding superior e inferior  */
+    color: #323e84; /*  Color de texto azul oscuro  */
+    font-size: 14px;  /* Tamaño de fuente */
+}
+
+.footer-content {
+    display: flex; /* Usamos Flexbox */
+    justify-content: space-between; /* Distribuye el espacio */
+    align-items: center; /* Centrado vertical */
+    flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+}
+
+.footer-info {
+    flex: 1 1 300px; /*  Crece, se encoge, base de 300px  */
+    margin-right: 20px;  /*  Margen a la derecha  */
+     text-align: left; /*Alineacion a la izquierda*/
+
+}
+
+.footer-info p {
+    margin: 5px 0; /*  Margen superior e inferior para los párrafos  */
+}
+
+.footer-social {
+    flex: 0 0 auto; /* No crece, no se encoge, tamaño automático */
+    margin-right: 20px;
+    display: flex; /* Para alinear los iconos horizontalmente */
+    align-items: center;/*Centrar verticalmente los iconos*/
+
+}
+
+.footer-icon {
+    height: 24px; /*  Tamaño de los iconos  */
+    margin: 0 5px; /*  Espacio entre iconos  */
+     vertical-align: middle; /* Alinea verticalmente los íconos */
+}
+
+.footer-logo {
+    flex: 0 0 auto;  /* No crece, no se encoge, tamaño automático */
+    text-align: right;
+}
+
+.logofooter {
+    max-width: 180px; /*  Tamaño máximo del logo  */
+     height: auto;
+}
+
+/*  Media Queries para Responsive Design  */
+
+
+@media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer-info, .footer-social, .footer-logo{
+      margin: 10px 0;
+      width: 100%; /* Ocupa todo el ancho */
+      text-align: center; /* Centra el contenido */
+    }
+    .footer-logo {
+        text-align: center; /*Centrar imagen responsivo*/
+    }
+    .footer-info {
+        text-align: center;
+    }
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+/*  Tablets  */
+@media (max-width: 768px) {
+    .curso {
+        width: 100%; /* Una columna en pantallas más pequeñas */
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 1rem;
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    .footer-social, .footer-logo {
+        text-align: center; /* Centra en pantallas pequeñas */
+    }
+}
+
+/*  Móviles  */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .container {
+        padding: 0 10px; /*  Menos espacio lateral en móviles  */
+    }
+}
