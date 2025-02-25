@@ -122,8 +122,8 @@ h2 {
 /* Estilos de los botones */
 /* Usamos variables CSS para los colores del botón */
 :root {
-  --boton-color: #ff8c00;
-  --boton-hover-color: #e07900; /* Color más oscuro para el hover */
+  --boton-color: #ff4c4c;
+  --boton-hover-color: #ff0707; /* Color más oscuro para el hover */
   /* O, usando color-mix (más avanzado, pero recomendado): */
   /* --boton-hover-color: color-mix(in srgb, var(--boton-color) 80%, black); */
 }
