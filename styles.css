@@ -18,9 +18,9 @@ body {
 
 /* Estilos del encabezado */
 header {
-    background-color: #337ab7; /* Azul oscuro/Morado */
+    background-color: #337ab7;
     color: #ffffff;
-    padding: 10px 0;
+    padding: 20px 0; /* Aumentamos el padding vertical */
 }
 
 header .container {
@@ -32,6 +32,11 @@ header .container {
 .logo {
     display: flex;
     align-items: center;
+}
+
+.logo img { /* Agregamos estilos específicos para la imagen del logo */
+    max-width: 200px; /* Aumentamos el tamaño máximo del logo (ajusta este valor) */
+    height: auto;     /* Mantiene la proporción de la imagen */
 }
 
 nav ul {
