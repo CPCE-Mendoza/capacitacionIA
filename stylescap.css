@@ -1,0 +1,394 @@
+/* styles.css */
+
+/* Reset básico y estilos generales */
+body {
+    font-family: "Open Sans", sans-serif; /* O la fuente que elijas */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #000000; /* Negro para el texto principal */
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+.container {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto;  /* Centrar el contenido */
+    padding: 0 20px; /* Espacio a los lados */
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #337ab7;
+    color: #ffffff;
+    padding: 20px 0; /* Aumentamos el padding vertical */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img { /* Agregamos estilos específicos para la imagen del logo */
+    max-width: 200px; /* Aumentamos el tamaño máximo del logo (ajusta este valor) */
+    height: auto;     /* Mantiene la proporción de la imagen */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transición suave para el hover */
+}
+
+nav a:hover {
+    color: #48b8d0; /* Celeste/Turquesa al pasar el mouse */
+}
+
+/* Estilos de las secciones */
+section {
+    padding: 40px 0;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #337ab7;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #337ab7;
+}
+
+/* Estilos de las tarjetas de curso */
+.curso-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.curso {
+    width: calc(50% - 20px); /* Dos columnas */
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;          /* ¡Hacemos .curso un contenedor flexible! */
+    flex-direction: column; /* Apilamos los elementos verticalmente */
+    /* justify-content: space-between;  <- Ya no es necesario aquí */
+}
+
+.curso:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.curso-imagen {
+    width: 100%;
+    height: 250px;         /* Altura fija para las imágenes */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+    max-width: 100%;      /* Asegura que no se salga del contenedor */
+}
+
+.curso h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px; /* Reducido el margen inferior */
+    color: #337ab7;
+    /*  Alineación a la izquierda, por si acaso  */
+    text-align: left;
+}
+
+.curso p {
+    margin-bottom: 5px; /* Reducido el margen inferior */
+     /*  Alineación a la izquierda  */
+    text-align: left;
+}
+.curso p:last-of-type{
+   margin-bottom: 15px;
+}
+
+.curso p strong {
+    color: #337ab7;
+}
+
+.curso .btn {
+    margin-top: auto;  /* ¡Empuja el botón hacia abajo! */
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+    /* padding: 8px 16px;  <- Si quieres un botón más pequeño */
+}
+
+/* Estilos de los videos */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilos de los botones */
+/* Usamos variables CSS para los colores del botón */
+:root {
+  --boton-color: #ff4c4c;
+  --boton-hover-color: #ff0707; /* Color más oscuro para el hover */
+  /* O, usando color-mix (más avanzado, pero recomendado): */
+  /* --boton-hover-color: color-mix(in srgb, var(--boton-color) 80%, black); */
+}
+
+
+.btn {
+    background-color: var(--boton-color);
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Quita el subrayado si es un enlace */
+    display: inline-block; /* Permite ajustar el padding */
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--boton-hover-color);
+}
+
+/* Estilos del pie de página (versión mejorada) */
+footer {
+    background-color: #edeef0;  /* Mismo color de fondo */
+    padding: 30px 0; /*  Padding superior e inferior  */
+    color: #323e84; /*  Color de texto azul oscuro  */
+    font-size: 14px;  /* Tamaño de fuente */
+}
+
+.footer-content {
+    display: flex; /* Usamos Flexbox */
+    justify-content: space-between; /* Distribuye el espacio */
+    align-items: center; /* Centrado vertical */
+    flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+}
+
+.footer-info {
+    flex: 1 1 300px; /*  Crece, se encoge, base de 300px  */
+    margin-right: 20px;  /*  Margen a la derecha  */
+     text-align: left; /*Alineacion a la izquierda*/
+
+}
+
+.footer-info p {
+    margin: 5px 0; /*  Margen superior e inferior para los párrafos  */
+}
+
+.footer-social {
+    flex: 0 0 auto; /* No crece, no se encoge, tamaño automático */
+    margin-right: 20px;
+    display: flex; /* Para alinear los iconos horizontalmente */
+    align-items: center;/*Centrar verticalmente los iconos*/
+
+}
+
+.footer-icon {
+    height: 24px; /*  Tamaño de los iconos  */
+    margin: 0 5px; /*  Espacio entre iconos  */
+     vertical-align: middle; /* Alinea verticalmente los íconos */
+}
+
+.footer-logo {
+    flex: 0 0 auto;  /* No crece, no se encoge, tamaño automático */
+    text-align: right;
+}
+
+.logofooter {
+    max-width: 180px; /*  Tamaño máximo del logo  */
+     height: auto;
+}
+
+/* Estilos para la sección Hero (index.html) */
+.hero {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f5f5f5; /* Color de fondo suave (opcional) */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+}
+
+.hero h1 {
+    font-size: 3em; /* Título más grande */
+    margin-bottom: 20px;
+    color: #337ab7;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #555; /* Color de texto más oscuro */
+}
+
+.hero-image {
+    max-width: 80%; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    margin-top: 30px;
+    border-radius: 8px; /* Bordes redondeados (opcional) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave (opcional) */
+}
+
+/* Estilos para la sección de Información (index.html) */
+.info {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.info h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: #337ab7;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño responsive */
+    gap: 30px;
+}
+
+.info-item {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.info-icon {
+    width: 50px; /* Tamaño de los iconos */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Estilos para la sección de Contacto Rápido (index.html) */
+.contacto-rapido {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #f9f9f9; /* Fondo ligeramente diferente */
+    border-top: 1px solid #ddd;
+}
+
+.contacto-rapido h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #337ab7;
+}
+
+.contacto-rapido p {
+    margin-bottom: 10px;
+}
+
+/* Estilos adicionales para las tarjetas de curso (capacitaciones.html) */
+.curso-imagen {
+    width: 100%;       /* Ocupa todo el ancho del contenedor */
+    height: 250px;     /* Altura fija (ajústala según tus necesidades) */
+    object-fit: cover; /*  ¡La clave! */
+    object-position: center; /* Centra la imagen */
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+    max-width: 100%; /*Asegura que la imagen no se salga de su contenedor*/
+
+}
+
+.curso p strong { /* Estilo para "Docente:" y "Fecha:" */
+    color: #337ab7; /* Color azul para resaltar */
+}
+.curso .video-container{
+  margin-top: 1rem;
+}
+
+/*  Media Queries para Responsive Design  */
+
+
+@media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer-info, .footer-social, .footer-logo{
+      margin: 10px 0;
+      width: 100%; /* Ocupa todo el ancho */
+      text-align: center; /* Centra el contenido */
+    }
+    .footer-logo {
+        text-align: center; /*Centrar imagen responsivo*/
+    }
+    .footer-info {
+        text-align: center;
+    }
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+/*  Tablets  */
+@media (max-width: 768px) {
+    .curso {
+        width: 100%; /* Una columna en pantallas más pequeñas */
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 1rem;
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    .footer-social, .footer-logo {
+        text-align: center; /* Centra en pantallas pequeñas */
+    }
+}
+
+/*  Móviles  */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .container {
+        padding: 0 10px; /*  Menos espacio lateral en móviles  */
+    }
+}
