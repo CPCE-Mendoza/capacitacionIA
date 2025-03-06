@@ -1,26 +1,33 @@
 /* styles.css */
 
-/* Reset básico y estilos generales */
+/* --- Reset y Estilos Generales --- */
+
 body {
-    font-family: "Open Sans", sans-serif; /* O la fuente que elijas */
+    font-family: 'Open Sans', sans-serif; /* O la fuente que prefieras */
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #000000; /* Negro para el texto principal */
-    background-color: #ffffff; /* Fondo blanco */
+    color: #333; /* Gris oscuro para texto principal */
+    background-color: #fff; /* Blanco */
 }
+
+/* --- Contenedor Principal --- */
 
 .container {
-    max-width: 1200px; /* Ancho máximo del contenido */
-    margin: 0 auto;  /* Centrar el contenido */
-    padding: 0 20px; /* Espacio a los lados */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Estilos del encabezado */
+/* --- Encabezado (Header) --- */
+
 header {
-    background-color: #337ab7;
-    color: #ffffff;
-    padding: 20px 0; /* Aumentamos el padding vertical */
+    background-color: #fff; /* Fondo blanco */
+    color: #333;       /* Texto oscuro */
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
 }
 
 header .container {
@@ -30,13 +37,13 @@ header .container {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+    flex: 0 0 auto;
+    margin-right: 20px;
 }
 
-.logo img { /* Agregamos estilos específicos para la imagen del logo */
-    max-width: 200px; /* Aumentamos el tamaño máximo del logo (ajusta este valor) */
-    height: auto;     /* Mantiene la proporción de la imagen */
+.header-logo {
+    max-width: 200px;
+    height: auto;
 }
 
 nav ul {
@@ -44,6 +51,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -51,344 +59,548 @@ nav ul li {
 }
 
 nav a {
-    color: #ffffff;
+    color: #337ab7; /* Azul CPCE, ya no blanco */
     text-decoration: none;
-    transition: color 0.3s ease; /* Transición suave para el hover */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 10px 15px;
+    display: inline-block;
 }
 
 nav a:hover {
-    color: #48b8d0; /* Celeste/Turquesa al pasar el mouse */
+    color: #00C4D7; /* Turquesa Digital House */
+     border-bottom: 2px solid #00C4D7; /*Subrayado*/
 }
 
-/* Estilos de las secciones */
+/* --- Secciones --- */
+
 section {
-    padding: 40px 0;
+    padding: 80px 0; /* Más espacio vertical */
 }
 
 h1 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
+    font-size: 3.5em; /* Más grande */
+    margin-bottom: 40px; /* Más espacio */
     text-align: center;
-    color: #337ab7;
+    color: #333;
+    font-weight: 700;
 }
 
 h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: #337ab7;
+    font-size: 2.5em; /* Más grande */
+    margin-bottom: 20px; /* Más espacio */
+    color: #333;
+    font-weight: 700;
 }
 
-/* Estilos de las tarjetas de curso */
+h3 { /*  Agregamos estilos para h3 */
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* --- Tarjetas de Curso --- */
+
 .curso-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 20px;
+    gap: 30px;
 }
 
 .curso {
-    width: calc(50% - 20px); /* Dos columnas */
+    width: calc(50% - 30px); /* Dos columnas */
     box-sizing: border-box;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: none; /* Quitamos el borde */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;          /* ¡Hacemos .curso un contenedor flexible! */
-    flex-direction: column; /* Apilamos los elementos verticalmente */
-    /* justify-content: space-between;  <- Ya no es necesario aquí */
+    display: flex;
+    flex-direction: column;
 }
 
 .curso:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .curso-imagen {
     width: 100%;
-    height: 250px;         /* Altura fija para las imágenes */
+    height: 250px; /* Ajusta */
     object-fit: cover;
     object-position: center;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 15px;
-    max-width: 100%;      /* Asegura que no se salga del contenedor */
+    border-radius: 12px 12px 0 0; /* Redondeado arriba */
+    margin-bottom: 20px;
 }
 
 .curso h2 {
     font-size: 1.8em;
-    margin-bottom: 10px; /* Reducido el margen inferior */
-    color: #337ab7;
-    /*  Alineación a la izquierda, por si acaso  */
+    margin-bottom: 15px; /* Más espacio */
+    color: #333;
     text-align: left;
 }
 
 .curso p {
-    margin-bottom: 5px; /* Reducido el margen inferior */
-     /*  Alineación a la izquierda  */
+    margin-bottom: 10px; /* Más espacio */
     text-align: left;
+    color: #555; /* Gris un poco más oscuro */
 }
-.curso p:last-of-type{
-   margin-bottom: 15px;
+
+.curso p:last-of-type {
+    margin-bottom: 20px; /* Más espacio antes del botón */
 }
 
 .curso p strong {
-    color: #337ab7;
+  color: #337ab7;
 }
 
 .curso .btn {
-    margin-top: auto;  /* ¡Empuja el botón hacia abajo! */
-    align-self: flex-start; /* Alinea el botón a la izquierda */
-    /* padding: 8px 16px;  <- Si quieres un botón más pequeño */
+    margin-top: auto;
+    align-self: flex-start;
 }
 
-/* Estilos de los videos */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
-    height: 0;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* Estilos de los botones */
-/* Usamos variables CSS para los colores del botón */
+/* --- Botones --- */
+/* (Variables CSS) */
 :root {
-  --boton-color: #ff4c4c;
-  --boton-hover-color: #ff0707; /* Color más oscuro para el hover */
-  /* O, usando color-mix (más avanzado, pero recomendado): */
-  /* --boton-hover-color: color-mix(in srgb, var(--boton-color) 80%, black); */
+    --boton-color: #FF4C4C; /* Naranja Digital House */
+    --boton-hover-color: #E63939; /* Naranja más oscuro */
 }
-
 
 .btn {
     background-color: var(--boton-color);
-    color: #ffffff;
-    padding: 10px 20px;
+    color: #fff;
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    text-decoration: none; /* Quita el subrayado si es un enlace */
-    display: inline-block; /* Permite ajustar el padding */
+    text-decoration: none;
+    display: inline-block;
     transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase; /* Mayúsculas */
 }
 
 .btn:hover {
     background-color: var(--boton-hover-color);
 }
 
-/* Estilos del pie de página (versión mejorada) */
+/* --- Footer --- */
+
 footer {
-    background-color: #edeef0;  /* Mismo color de fondo */
-    padding: 30px 0; /*  Padding superior e inferior  */
-    color: #323e84; /*  Color de texto azul oscuro  */
-    font-size: 14px;  /* Tamaño de fuente */
+    background-color: #f5f5f5; /* Gris muy claro */
+    padding: 30px 0;
+    color: #555; /* Gris oscuro */
+    font-size: 14px;
 }
 
 .footer-content {
-    display: flex; /* Usamos Flexbox */
-    justify-content: space-between; /* Distribuye el espacio */
-    align-items: center; /* Centrado vertical */
-    flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .footer-info {
-    flex: 1 1 300px; /*  Crece, se encoge, base de 300px  */
-    margin-right: 20px;  /*  Margen a la derecha  */
-     text-align: left; /*Alineacion a la izquierda*/
-
+    flex: 1 1 300px;
+    margin-right: 20px;
+     text-align: left;
 }
 
 .footer-info p {
-    margin: 5px 0; /*  Margen superior e inferior para los párrafos  */
+    margin: 5px 0;
 }
 
 .footer-social {
-    flex: 0 0 auto; /* No crece, no se encoge, tamaño automático */
+    flex: 0 0 auto;
     margin-right: 20px;
-    display: flex; /* Para alinear los iconos horizontalmente */
-    align-items: center;/*Centrar verticalmente los iconos*/
-
+    display: flex;
+    align-items: center;
 }
 
 .footer-icon {
-    height: 24px; /*  Tamaño de los iconos  */
-    margin: 0 5px; /*  Espacio entre iconos  */
-     vertical-align: middle; /* Alinea verticalmente los íconos */
+    height: 24px;
+    margin: 0 5px;
+     vertical-align: middle;
 }
-
 .footer-logo {
-    flex: 0 0 auto;  /* No crece, no se encoge, tamaño automático */
-    text-align: right;
+    flex: 0 0 auto;
+     text-align: right;
 }
 
 .logofooter {
-    max-width: 180px; /*  Tamaño máximo del logo  */
+    max-width: 180px;
      height: auto;
 }
 
-/* Estilos para la sección Hero (index.html) */
+/* --- Hero Section (index.html) --- */
+
 .hero {
     text-align: center;
-    padding: 50px 0;
-    background-color: #f5f5f5; /* Color de fondo suave (opcional) */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
+    padding: 100px 0;
+    background-color: #f9f9f9;  /* Fondo claro en modo claro */
+    border-bottom: 1px solid #eee;
 }
 
 .hero h1 {
-    font-size: 3em; /* Título más grande */
-    margin-bottom: 20px;
-    color: #337ab7;
+    font-size: 4em;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 .hero p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    color: #555; /* Color de texto más oscuro */
+    font-size: 1.5em;
+    margin-bottom: 50px;
+    color: #555;
 }
 
 .hero-image {
-    max-width: 80%; /* Ajusta el tamaño de la imagen */
+    max-width: 100%;
     height: auto;
-    margin-top: 30px;
-    border-radius: 8px; /* Bordes redondeados (opcional) */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave (opcional) */
+    margin-top: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-/* Estilos para la sección de Información (index.html) */
+/* --- Info Section (index.html) --- */
 .info {
-    padding: 60px 0;
-    text-align: center;
+  padding: 80px 0;
+  text-align: center;
 }
 
 .info h2 {
-    font-size: 2.2em;
-    margin-bottom: 40px;
-    color: #337ab7;
+  font-size: 2.5em;
+  margin-bottom: 50px;
+  color: #333;
 }
 
 .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño responsive */
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
 }
 
 .info-item {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+  padding: 30px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+.info-item:hover{
+   transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
 }
 
 .info-icon {
-    width: 50px; /* Tamaño de los iconos */
-    height: auto;
-    margin-bottom: 15px;
+  width: 60px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-/* Estilos para la sección de Contacto Rápido (index.html) */
+/* --- Contacto Rápido (index.html) --- */
+
 .contacto-rapido {
-    padding: 40px 0;
+    padding: 50px 0;
     text-align: center;
-    background-color: #f9f9f9; /* Fondo ligeramente diferente */
-    border-top: 1px solid #ddd;
+    background-color: #f5f5f5; /* Gris claro */
+    border-top: 1px solid #eee;
 }
 
 .contacto-rapido h2 {
-    font-size: 1.8em;
+    font-size: 2em;
     margin-bottom: 20px;
-    color: #337ab7;
+    color: #333;
 }
 
 .contacto-rapido p {
     margin-bottom: 10px;
 }
 
-/* Estilos adicionales para las tarjetas de curso (capacitaciones.html) */
-.curso-imagen {
-    width: 100%;       /* Ocupa todo el ancho del contenedor */
-    height: 250px;     /* Altura fija (ajústala según tus necesidades) */
-    object-fit: cover; /*  ¡La clave! */
-    object-position: center; /* Centra la imagen */
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 15px;
-    max-width: 100%; /*Asegura que la imagen no se salga de su contenedor*/
+/* --- Modo Oscuro --- */
 
+/* Contenedor del botón */
+.dark-mode-toggle {
+    margin-left: auto; /* Mueve el botón a la derecha */
+    margin-right: 20px;
 }
 
-.curso p strong { /* Estilo para "Docente:" y "Fecha:" */
-    color: #337ab7; /* Color azul para resaltar */
-}
-.curso .video-container{
-  margin-top: 1rem;
+.dark-mode-toggle button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-/*  Media Queries para Responsive Design  */
+.dark-mode-toggle button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
 
+/* --- Estilos para el Modo Oscuro (Preferidos por el Sistema) --- */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #eee;
+    }
+
+    header {
+        background-color: #1E3A8A;
+        color: #fff;
+    }
+
+    .hero {
+        background-color: #1f1f1f; /* Fondo oscuro para .hero */
+        border-bottom: 1px solid #444; /* Borde más oscuro */
+    }
+
+    .hero h1 {
+        color: #bb86fc;  /* Color del título en modo oscuro */
+    }
+
+    .hero p {
+        color: #ddd;    /* Color del texto en modo oscuro */
+    }
+
+    .contacto-rapido {
+        background-color: #1A1A1A;
+        border-top: 1px solid #444;
+    }
+
+    footer {
+        background-color: #1E3A8A;
+        color: #f5f5f5;
+    }
+    /*No es necesario, ya que los colores no cambian
+    :root {
+        --boton-color: #bb86fc;
+        --boton-hover-color: #3700b3;
+    }
+    */
+
+    h1, h2, .curso h2, h3, strong {
+        color: #bb86fc;
+    }
+    .curso p strong{
+        color: #bb86fc;
+    }
+
+    a {
+        color: #80c4de;
+    }
+
+    a:hover {
+        color: #a7d9ed;
+          border-bottom: 2px solid #a7d9ed; /*Para que se mantenga el subrayado*/
+    }
+     nav a:hover {
+        color: #a7d9ed;
+          border-bottom: 2px solid #a7d9ed; /*Para que se mantenga el subrayado*/
+    }
+
+    .curso, .info-item {
+        background-color: #1f1f1f;
+        border: none;
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    }
+    .curso:hover,
+    .info-item:hover
+    {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15); /* Sombra más pronunciada */
+    }
+
+    #toggleIcon {
+        content: "\1F31E"; /* Sol por defecto en modo oscuro del sistema */
+    }
+}
+
+/* --- Estilos para el Modo Oscuro (Anulación Manual) --- */
+/*  Estos estilos *sobrescriben* los de prefers-color-scheme
+    si el usuario hace clic en el botón.
+*/
+
+body.dark-mode {
+    background-color: #121212; /* Fondo oscuro */
+    color: #eee;           /* Texto claro */
+}
+/*Modo oscuro para el header*/
+body.dark-mode header{
+  background-color: #1E3A8A; /* Un azul mas oscuro para el header */
+    color: #fff; /* Asegura que el texto del header sea blanco */
+}
+
+/* --- Modo Oscuro (Anulación Manual) --- */
+
+body.dark-mode .hero {
+    background-color: #1f1f1f; /* Fondo oscuro */
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .hero h1 {
+    color: #bb86fc;
+}
+
+body.dark-mode .hero p {
+    color: #ddd;
+}
+
+/*Modo oscuro para la seccion de contacto*/
+body.dark-mode .contacto-rapido {
+    background-color: #1A1A1A; /*Fondo ligeramente diferente*/
+    border-top: 1px solid #444;
+}
+
+/*Modo oscuro para el footer*/
+body.dark-mode footer{
+    background-color: #1E3A8A; /* Un azul mas oscuro para el footer */
+    color: #f5f5f5;
+}
+
+/*Modo oscuro para los botones*/
+/* No necesitamos esto, el color de los botones no cambia
+body.dark-mode :root {
+  --boton-color: #bb86fc;
+  --boton-hover-color: #3700b3;
+}
+*/
+
+/*Modo oscuro para titulos*/
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode .curso h2,
+body.dark-mode h3,
+body.dark-mode strong
+{
+    color: #bb86fc; /* Color morado para titulos */
+}
+body.dark-mode .curso p strong{
+   color: #bb86fc;
+}
+
+/* Modo oscuro para enlaces */
+body.dark-mode a {
+    color: #80c4de; /* Celeste/Turquesa */
+}
+
+body.dark-mode a:hover {
+    color: #a7d9ed; /* Celeste más claro al pasar el mouse */
+     border-bottom: 2px solid #a7d9ed; /*Para que se mantenga el subrayado*/
+}
+body.dark-mode nav a:hover {
+    color: #a7d9ed; /* Celeste más claro al pasar el mouse */
+     border-bottom: 2px solid #a7d9ed; /*Para que se mantenga el subrayado*/
+}
+/*Modo oscuro para las cards*/
+body.dark-mode .curso, body.dark-mode .info-item {
+    background-color: #1f1f1f;
+    border: none; /* Quitamos el borde */
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .curso:hover,
+body.dark-mode .info-item:hover
+{
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15); /* Sombra más pronunciada */
+}
+body.dark-mode #toggleIcon {
+  content: "\1F31E";  /* Código Unicode del sol (🌞) */
+}
+
+/* --- Media Queries (Responsive) --- */
 
 @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .footer-info, .footer-social, .footer-logo{
-      margin: 10px 0;
-      width: 100%; /* Ocupa todo el ancho */
-      text-align: center; /* Centra el contenido */
-    }
-    .footer-logo {
-        text-align: center; /*Centrar imagen responsivo*/
-    }
-    .footer-info {
-        text-align: center;
-    }
-    .footer-social {
-        justify-content: center;
-    }
-}
-
-/*  Tablets  */
-@media (max-width: 768px) {
-    .curso {
-        width: 100%; /* Una columna en pantallas más pequeñas */
-    }
-
+    /* Header */
     header .container {
         flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+         margin-right: 0;
+
     }
 
     nav ul {
-        margin-top: 1rem;
         flex-direction: column;
+        width: 100%;
     }
 
     nav ul li {
         margin-left: 0;
-        margin-top: 0.5rem;
+        margin-bottom: 5px;
+    }
+    nav a {
+        padding: 5px 10px; /* Más pequeño en móviles */
+        display: block; /* Ocupa todo el ancho */
+        width: 100%;
+        box-sizing: border-box; /* Importante */
+        text-align: left;
+    }
+
+    /* Secciones */
+    h1 {
+        font-size: 2.5em; /* Más pequeño */
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .curso {
+        width: 100%; /* Una columna */
+    }
+
+    .curso-imagen {
+        height: auto; /* Ajusta la altura automáticamente */
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+    }
+     .footer-content {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: flex-start; /* Alinea a la izquierda */
     }
     .footer-social, .footer-logo {
-        text-align: center; /* Centra en pantallas pequeñas */
+      margin: 10px 0; /*Espaciado*/
+    }
+
+    .footer-info, .footer-social{
+      text-align:center;
+    }
+
+    .footer-logo {
+        text-align: center; /* Centra el logo */
+        width: 100%; /* Ocupa todo el ancho */
+    }
+  .dark-mode-toggle {
+      margin: 10px 0; /*Espaciado*/
     }
 }
 
-/*  Móviles  */
 @media (max-width: 480px) {
-    h1 {
+    /* Ajustes adicionales para pantallas muy pequeñas */
+    .hero h1 {
         font-size: 2em;
+    }
+      .hero p {
+        font-size: 1.2em;
     }
 
     h2 {
         font-size: 1.5em;
     }
-
-    .container {
-        padding: 0 10px; /*  Menos espacio lateral en móviles  */
+    .info-grid {
+        grid-template-columns: 1fr; /* Una columna */
     }
 }
