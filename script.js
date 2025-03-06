@@ -3,18 +3,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
-    const toggleIcon = document.getElementById('toggleIcon');
+    const toggleCheckbox = document.getElementById('toggleCheckbox'); // Usamos el checkbox
 
     // Función para establecer el modo oscuro
     function setDarkMode(enabled) {
         if (enabled) {
             body.classList.add('dark-mode');
-            toggleIcon.textContent = "\u{1F31E}"; // Sol
             localStorage.setItem('darkMode', 'enabled');
+            toggleCheckbox.checked = true; // Asegura que el checkbox esté marcado
         } else {
             body.classList.remove('dark-mode');
-            toggleIcon.textContent = "\u{1F319}"; // Luna
             localStorage.setItem('darkMode', 'disabled');
+            toggleCheckbox.checked = false; // Asegura que el checkbox esté desmarcado
         }
     }
 
@@ -31,30 +31,28 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 setDarkMode(true);
             }
-            //Si no hay ninguna preferencia, se queda en modo claro.
         }
     }
 
-    // Event listener para el botón
-    darkModeToggle.addEventListener('click', function() {
-        // Alterna el modo oscuro y guarda la preferencia
-        setDarkMode(!body.classList.contains('dark-mode'));
-    });
+    // Event listener para el botón (ahora para el checkbox)
+     toggleCheckbox.addEventListener('change', function() { // Usamos 'change'
+         setDarkMode(toggleCheckbox.checked); // Pasamos el estado del checkbox
+     });
 
     // Aplica la preferencia al cargar la página
     checkDarkModePreference();
 
-    //Escuchamos si cambia la preferencia a nivel de sistema operativo.
+    // Escuchamos si cambia la preferencia a nivel de sistema operativo.
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         const newColorScheme = e.matches ? "dark" : "light";
 
         // Usa la preferencia del sistema SOLO si no hay una manual
         if (localStorage.getItem('darkMode') === null) {
-          if (newColorScheme === "dark") {
-              setDarkMode(true);  //Aplicamos el modo oscuro
-          } else {
-              setDarkMode(false); //Si no se ha cambiado, quitamos el modo oscuro
-          }
+            if (newColorScheme === "dark") {
+                setDarkMode(true);
+            } else {
+                setDarkMode(false);
+            }
         }
     });
 });

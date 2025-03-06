@@ -77,21 +77,87 @@ nav a:hover {
 
 /* --- Botón de Modo Oscuro --- */
 
+/* --- Estilos para el Interruptor --- */
+
 .dark-mode-toggle {
     margin-left: auto;
     margin-right: 1rem;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    display: inline-block;
 }
 
-.dark-mode-toggle button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    outline: none;
-    padding: 5px;
-    transition: color 0.3s ease;
+.checkbox {
+    display: none;
 }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;  /* Gris claro para el fondo del slider (apagado) */
+    transition: background-color 0.4s ease;
+    border-radius: 30px;
+}
+
+/* Icono de luna (modo oscuro) */
+.slider::before {
+    content: "🌙";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 3px;
+    color: #666; /* Gris para los iconos */
+    transition: transform 0.4s ease, color 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono de sol (modo claro) */
+.slider::after {
+    content: "☀️";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    right: 4px;
+    bottom: 3px;
+    color: #666; /* Gris para los iconos */
+    transition: transform 0.4s ease, color 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos cuando el checkbox está "checked" (modo oscuro activado) */
+.checkbox:checked + .slider {
+    background-color: #999; /* Gris más oscuro para el fondo del slider (encendido)*/
+}
+
+/* Mover la luna y ocultar el sol */
+.checkbox:checked + .slider::before {
+    transform: translateX(30px);
+    color: #666; /* Mantenemos el color gris para el sol */
+}
+
+.checkbox:checked + .slider::after {
+    transform: translateX(30px);
+    opacity: 0;
+}
+  
+  /* Estilos cuando el checkbox está "checked" (modo oscuro activado) */
+  .checkbox:checked + .slider {
+    background-color: #2196F3; /* Color de fondo (encendido) */
+  }
+  
+  .checkbox:checked + .slider::before {
+    transform: translateX(30px); /* Mueve el círculo a la derecha */
+  }
 
 /* --- Secciones --- */
 
@@ -510,7 +576,200 @@ body.dark-mode #toggleIcon {
     content: "\1F31E";
 }
 
+/*Ajustes a los colores del slider*/
 
+/*Claro*/
+@media (prefers-color-scheme: light) {
+    body:not(.dark-mode){
+      .slider {
+          background-color: #ccc;
+      }
+      .slider::before{
+          color: #666;
+      }
+      .slider::after{
+          color: #666;
+      }
+      .checkbox:checked + .slider {
+          background-color: #999;
+      }
+        .checkbox:checked + .slider::before {
+          color: #666;
+      }
+      .checkbox:checked + .slider::after{
+          opacity: 0;
+      }
+    }
+  }
+ /* --- Modo Oscuro (Preferencia del Sistema) --- */
+@media (prefers-color-scheme: dark) {
+    /* Estilos para cuando el sistema prefiere modo oscuro */
+    .slider {
+        background-color: #666;
+    }
+    .slider::before {
+        color: #999;
+    }
+    .slider::after {
+        color: #999;
+    }
+    /*  Estos se repiten, pero es más claro.  Si usas un preprocesador como Sass,
+        puedes evitar la repetición con mixins. */
+    .checkbox:checked + .slider {
+        background-color: #bb86fc;
+    }
+    .checkbox:checked + .slider::before {
+        color: #999;
+    }
+    .checkbox:checked + .slider::after {
+        opacity: 0;
+    }
+
+      body {
+        background-color: #121212;
+        color: #eee;
+    }
+
+    header {
+        background-color: #1c57b1;
+    }
+
+    h1, h2, .curso h2, h3, strong {
+        color: #fff;
+    }
+
+    .curso p strong {
+        color: #fff;
+    }
+
+    a {
+        color: #80c4de;
+    }
+
+    nav a {
+        color: #fff; /* Color del texto en el modo oscuro */
+    }
+
+    a:hover, nav a:hover {
+        color: #a7d9ed;
+        border-bottom-color: #a7d9ed;
+    }
+
+    .curso, .info-item {
+        background-color: #1f1f1f;
+        border-color: #444;
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    }
+
+    .curso:hover,
+    .info-item:hover {
+        box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+    }
+
+    .contacto-rapido {
+        background-color: #1A1A1A;
+        border-top-color: #444;
+    }
+
+    footer {
+        background-color: #1c57b1;
+        color: #fff;
+    }
+
+    .dark-mode-toggle button {
+        color: #ddd;
+    }
+
+    #toggleIcon {
+        content: "\1F31E";
+    }
+    /*Aquí ya se definio, lo quitamos body.dark-mode .hero::before{
+        box-shadow: inset 0px 8px 16px -4px rgba(255, 255, 255, 0.3);
+    }*/
+
+}
+
+/* --- Modo Oscuro (Anulación Manual - botón) --- */
+body.dark-mode {
+    /* Estilos para cuando el usuario activa el modo oscuro manualmente */
+    .slider {
+        background-color: #666;
+    }
+    .slider::before {
+        color: #999;
+    }
+    .slider::after {
+        color: #999;
+    }
+    .checkbox:checked + .slider {
+        background-color: #bb86fc;
+    }
+    .checkbox:checked + .slider::before {
+        color: #999;
+    }
+    .checkbox:checked + .slider::after {
+        opacity: 0;
+    }
+
+       background-color: #121212;
+    color: #eee;
+
+
+    header {
+        background-color: #1c57b1;
+    }
+
+    h1, h2, .curso h2, h3, strong {
+        color: #fff;
+    }
+
+     .curso p strong{
+        color: #fff;
+    }
+
+    a {
+        color: #80c4de;
+    }
+
+     nav a {
+         color: #fff; /* Color del texto en el modo oscuro */
+    }
+
+    a:hover, nav a:hover
+    {
+        color: #a7d9ed;
+        border-bottom-color: #a7d9ed;
+    }
+
+     .curso, .info-item {
+        background-color: #1f1f1f;
+        border-color: #444;
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    }
+
+    .curso:hover,
+     .info-item:hover {
+        box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+    }
+
+     .contacto-rapido {
+        background-color: #1A1A1A;
+        border-top-color: #444;
+    }
+
+     footer{
+       background-color: #1c57b1;/*Antes #f5f5f5*/
+        color: #fff;
+    }
+    .hero::before{
+        box-shadow: inset 0px 8px 16px -4px rgba(255, 255, 255, 0.3);/*Sombra en blanco*/
+    }
+
+    #toggleIcon {
+        content: "\1F31E";
+    }
+}
+  
 /* --- Media Queries (Responsive) --- */
 
 @media (max-width: 768px) {
