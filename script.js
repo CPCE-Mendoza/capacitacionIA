@@ -5,34 +5,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     const toggleIcon = document.getElementById('toggleIcon');
 
-    // Función para alternar el modo
-    function toggleDarkMode() {
-        body.classList.toggle('dark-mode');
-
-        // Guarda la preferencia en localStorage *solo si se hace clic en el botón*
-        if (body.classList.contains('dark-mode')) {
+    // Función para establecer el modo oscuro
+    function setDarkMode(enabled) {
+        if (enabled) {
+            body.classList.add('dark-mode');
+            toggleIcon.textContent = "\u{1F31E}"; // Sol
             localStorage.setItem('darkMode', 'enabled');
-             toggleIcon.textContent = "\u{1F31E}"; // Sol
-
         } else {
-            localStorage.setItem('darkMode', 'disabled');
+            body.classList.remove('dark-mode');
             toggleIcon.textContent = "\u{1F319}"; // Luna
+            localStorage.setItem('darkMode', 'disabled');
         }
     }
 
-    // Verifica si hay una preferencia guardada en localStorage
-    const savedDarkMode = localStorage.getItem('darkMode');
+    // Verifica la preferencia del usuario (localStorage o sistema)
+    function checkDarkModePreference() {
+        const savedDarkMode = localStorage.getItem('darkMode');
 
-    if (savedDarkMode === 'enabled') {
-        body.classList.add('dark-mode');
-        toggleIcon.textContent = "\u{1F31E}"; // Sol
-
-    } else if (savedDarkMode === 'disabled') {
-        body.classList.remove('dark-mode'); // Asegura que se quite la clase
-         toggleIcon.textContent = "\u{1F319}"; // Luna
+        if (savedDarkMode === 'enabled') {
+            setDarkMode(true);
+        } else if (savedDarkMode === 'disabled') {
+            setDarkMode(false);
+        } else {
+            // Si no hay preferencia guardada, usa la del sistema
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setDarkMode(true);
+            }
+            //Si no hay ninguna preferencia, se queda en modo claro.
+        }
     }
-    //Si savedDarkMode es null, no se hace nada, se usa la preferencia del sistema
 
     // Event listener para el botón
-    darkModeToggle.addEventListener('click', toggleDarkMode);
+    darkModeToggle.addEventListener('click', function() {
+        // Alterna el modo oscuro y guarda la preferencia
+        setDarkMode(!body.classList.contains('dark-mode'));
+    });
+
+    // Aplica la preferencia al cargar la página
+    checkDarkModePreference();
+
+    //Escuchamos si cambia la preferencia a nivel de sistema operativo.
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const newColorScheme = e.matches ? "dark" : "light";
+
+        // Usa la preferencia del sistema SOLO si no hay una manual
+        if (localStorage.getItem('darkMode') === null) {
+          if (newColorScheme === "dark") {
+              setDarkMode(true);  //Aplicamos el modo oscuro
+          } else {
+              setDarkMode(false); //Si no se ha cambiado, quitamos el modo oscuro
+          }
+        }
+    });
 });
