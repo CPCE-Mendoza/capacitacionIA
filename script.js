@@ -1,58 +1,57 @@
-// script.js
-
-document.addEventListener('DOMContentLoaded', function() {
-    const darkModeToggle = document.getElementById('darkModeToggle');
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleCheckbox = document.getElementById("toggleCheckbox");
     const body = document.body;
-    const toggleCheckbox = document.getElementById('toggleCheckbox'); // Usamos el checkbox
+    const images = document.querySelectorAll(".info-icon");
+    const toggleIcons = document.querySelectorAll(".toggle-icon");
+    const links = document.querySelectorAll("a[href^='#']"); // Enlaces internos
 
-    // Función para establecer el modo oscuro
-    function setDarkMode(enabled) {
-        if (enabled) {
-            body.classList.add('dark-mode');
-            localStorage.setItem('darkMode', 'enabled');
-            toggleCheckbox.checked = true; // Asegura que el checkbox esté marcado
-        } else {
-            body.classList.remove('dark-mode');
-            localStorage.setItem('darkMode', 'disabled');
-            toggleCheckbox.checked = false; // Asegura que el checkbox esté desmarcado
-        }
+    // 📌 Función para cambiar las imágenes según el modo
+    function changeImages(mode) {
+        images.forEach(img => {
+            img.src = mode === "dark" ? img.dataset.dark : img.dataset.light;
+        });
     }
 
-    // Verifica la preferencia del usuario (localStorage o sistema)
-    function checkDarkModePreference() {
-        const savedDarkMode = localStorage.getItem('darkMode');
-
-        if (savedDarkMode === 'enabled') {
-            setDarkMode(true);
-        } else if (savedDarkMode === 'disabled') {
-            setDarkMode(false);
-        } else {
-            // Si no hay preferencia guardada, usa la del sistema
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                setDarkMode(true);
-            }
-        }
+    // 📌 Cargar preferencia de modo oscuro de localStorage
+    if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        toggleCheckbox.checked = true;
+        changeImages("dark");
+    } else {
+        changeImages("light");
     }
 
-    // Event listener para el botón (ahora para el checkbox)
-     toggleCheckbox.addEventListener('change', function() { // Usamos 'change'
-         setDarkMode(toggleCheckbox.checked); // Pasamos el estado del checkbox
-     });
-
-    // Aplica la preferencia al cargar la página
-    checkDarkModePreference();
-
-    // Escuchamos si cambia la preferencia a nivel de sistema operativo.
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        const newColorScheme = e.matches ? "dark" : "light";
-
-        // Usa la preferencia del sistema SOLO si no hay una manual
-        if (localStorage.getItem('darkMode') === null) {
-            if (newColorScheme === "dark") {
-                setDarkMode(true);
-            } else {
-                setDarkMode(false);
-            }
+    // 📌 Evento para cambiar el modo oscuro/claro
+    toggleCheckbox.addEventListener("change", () => {
+        if (toggleCheckbox.checked) {
+            body.classList.add("dark-mode");
+            localStorage.setItem("darkMode", "enabled");
+            changeImages("dark");
+        } else {
+            body.classList.remove("dark-mode");
+            localStorage.setItem("darkMode", "disabled");
+            changeImages("light");
         }
+    });
+
+    // 📌 Implementar smooth-scroll en los enlaces de navegación
+    links.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50, // Ajuste opcional según tu navbar
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // 📌 Activar lazy-loading en imágenes
+    document.querySelectorAll("img").forEach(img => {
+        img.loading = "lazy";
     });
 });

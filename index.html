@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Portal de capacitaciones del Consejo Profesional de Ciencias Económicas de Mendoza. Cursos de Inteligencia Artificial y más.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consejo Profesional de Ciencias Económicas - Mendoza</title>
     <link rel="stylesheet" href="styles.css">
@@ -10,8 +11,11 @@
 </head>
 <body>
     <header>
-        <div class="container">  <div class="logo">
-                <img src="favicon_io/logotransp.png" alt="CPCE Logo" class="header-logo">
+        <div class="container">
+            <div class="logo">
+                <a href="https://cpcemza.org.ar/" target="_blank" rel="noopener noreferrer">
+                    <img src="favicon_io/logotransp.png" alt="CPCE Logo" class="header-logo">
+                </a>
             </div>
             <nav>
                 <ul>
@@ -20,34 +24,46 @@
                 </ul>
             </nav>
             <div class="dark-mode-toggle" id="darkModeToggle">
-              <input type="checkbox" class="checkbox" id="toggleCheckbox" />
-              <label for="toggleCheckbox" class="slider"></label>
+              
+              <span class="toggle-icon toggle-icon-moon">☀︎</span>
+                <input type="checkbox" class="checkbox" id="toggleCheckbox" />
+                <label for="toggleCheckbox" class="slider"></label>
+                <span class="toggle-icon toggle-icon-sun">☾</span>
+              
             </div>
         </div>
     </header>
 
-    <section class="hero">  <div class="hero-content container">  
+    <section class="hero">
+        <div class="hero-content container">
             <h1>Bienvenido al Portal de Capacitaciones</h1>
             <p>En el Consejo Profesional de Ciencias Económicas de Mendoza, nos comprometemos a ofrecerte una formación continua y de vanguardia. Explora nuestras capacitaciones en Inteligencia Artificial y otras áreas relevantes para tu desarrollo profesional.</p>
             <a href="capacitaciones.html" class="btn">Ver Capacitaciones</a>
         </div>
     </section>
 
-    <main class="container">  <section class="info">
+    <main class="container">
+        <section class="info">
             <h2>¿Por qué Capacitarse con Nosotros?</h2>
             <div class="info-grid">
                 <article class="info-item">
-                    <img src="img/calidad-educativa.webp" alt="Icono Calidad" class="info-icon">
+                    <picture>
+                        <img src="img/calidad-educativa-ligth.png" data-light="img/calidad-educativa-ligth.png" data-dark="img/calidad-educativa-dark.png" alt="Icono Calidad" class="info-icon">
+                    </picture>
                     <h3>Calidad Educativa</h3>
                     <p>Nuestros cursos están diseñados e impartidos por expertos en la materia, garantizando un aprendizaje de alto nivel.</p>
                 </article>
                 <article class="info-item">
-                    <img src="img/icono_actualizacion.jpg" alt="Icono Actualización" class="info-icon">
+                    <picture>
+                        <img src="img/actualizacion.png" data-light="img/actualizacion-ligth.png" data-dark="img/actualizacion-dark.png" alt="Icono Actualización" class="info-icon">
+                    </picture>
                     <h3>Actualización Constante</h3>
                     <p>Nos mantenemos al día con las últimas tendencias y tecnologías, para que siempre estés a la vanguardia.</p>
                 </article>
                 <article class="info-item">
-                    <img src="img/icono_comunidad1.png" alt="Icono Comunidad" class="info-icon">
+                    <picture>
+                        <img src="img/comunidad-ligth.png" data-light="img/comunidad-ligth.png" data-dark="img/comunidad-dark.png" alt="Icono Comunidad" class="info-icon">
+                    </picture>
                     <h3>Comunidad Profesional</h3>
                     <p>Forma parte de una red de profesionales y amplía tus contactos en el ámbito de las ciencias económicas.</p>
                 </article>
@@ -62,7 +78,8 @@
         </section>
     </main>
 
-    <footer>  <div class="container">
+    <footer>
+        <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
                     <p><b>Consejo Profesional de Ciencias Económicas</b></p>
