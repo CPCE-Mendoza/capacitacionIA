@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Portal de capacitaciones del Consejo Profesional de Ciencias Económicas de Mendoza. Cursos de Inteligencia Artificial y más.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compendio de Cursos de IA</title>
-    <link rel="stylesheet" href="stylescap.css" />
-    <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="stylescap.css">
+    <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
     <header>
-      <div class="container">
-        <div class="logo">
-          <img
-            src="favicon_io/logotransp.png"
-            alt="CPCE Logo"
-            class="header-logo"
-          />
+        <div class="container">
+            <div class="logo">
+                <a href="https://cpcemza.org.ar/" target="_blank" rel="noopener noreferrer">
+                    <img src="favicon_io/logotransp.png" alt="CPCE Logo" class="header-logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="capacitaciones.html">Capacitaciones</a></li>
+                </ul>
+            </nav>
+            <div class="dark-mode-toggle" id="darkModeToggle">
+              
+              <span class="toggle-icon toggle-icon-moon">☀︎</span>
+                <input type="checkbox" class="checkbox" id="toggleCheckbox" />
+                <label for="toggleCheckbox" class="slider"></label>
+                <span class="toggle-icon toggle-icon-sun">☾</span>
+              
+            </div>
         </div>
-        <nav>
-          <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="capacitaciones.html">Capacitaciones</a></li>
-          </ul>
-        </nav>
-      </div>
     </header>
 
     <main class="container">
@@ -39,7 +43,7 @@
             <img
               src="img/IAenContabilidad-Innovación y Futuro.jpg"
               alt="Imagen Curso Introducción a la IA"
-              class="curso-imagen"
+              class=" curso-imagen-container"
             />
             <h2>IA en Contabilidad: Innovación y Futuro</h2>
             <p>Aplicaciones de la IA en Contabilidad:</p>
@@ -71,7 +75,7 @@
             <img
               src="img/Impacto de la IA en la estrategia empresarial.jpg"
               alt="Imagen Curso Machine Learning Avanzado"
-              class="curso-imagen"
+              class=" curso-imagen-container"
             />
             <h2>Impacto de la IA en la estrategia empresarial</h2>
             <p>
@@ -91,7 +95,7 @@
             <img
               src="img/Optimización Contable con INTELIGENCIA.png"
               alt="Imagen Curso Machine Learning Avanzado"
-              class="curso-imagen"
+              class=" curso-imagen-container"
             />
             <h2>
               Optimización Contable con INTELIGENCIA ARTIFICIAL: Transformando
@@ -118,7 +122,7 @@
             <img
               src="img/Impacto de la IA en la estrategia empresarial.jpg"
               alt="Imagen Curso Machine Learning Avanzado"
-              class="curso-imagen"
+              class=" curso-imagen-container"
             />
             <h2>Impacto de la IA en la estrategia empresarial</h2>
             <p>
@@ -138,7 +142,7 @@
             <img
               src="img/Impacto de la IA en la estrategia empresarial.jpg"
               alt="Imagen Curso Machine Learning Avanzado"
-              class="curso-imagen"
+              class=" curso-imagen-container"
             />
             <h2>Impacto de la IA en la estrategia empresarial</h2>
             <p>
@@ -157,52 +161,37 @@
       </section>
     </main>
   </body>
+  
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-info">
-          <p><b>Consejo Profesional de Ciencias Económicas</b></p>
-          <p>
-            Av. España 560, Ciudad de Mendoza<br />Provincia de Mendoza,
-            Argentina
-          </p>
-          <p>+54 (0261) 4340055 | 4205014 | 4204515</p>
-        </div>
-        <div class="footer-social">
-          <a
-            href="https://www.facebook.com/CPCEMZA"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="img/icon_fb.png" alt="Facebook" class="footer-icon" />
-          </a>
-          <a
-            href="https://www.instagram.com/cpcemendoza"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="img/icon_in.png" alt="Instagram" class="footer-icon" />
-          </a>
-          <a
-            href="https://twitter.com/cpcemza"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="img/icon_tw.png" alt="Twitter" class="footer-icon" />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/cpce-mendoza/?viewAsMember=true"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="img/icon_li.png" alt="Linkedin" class="footer-icon" />
-          </a>
-        </div>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p><b>Consejo Profesional de Ciencias Económicas</b></p>
+                <p>Av. España 560, Ciudad de Mendoza<br>Provincia de Mendoza, Argentina</p>
+                <p>+54 (0261) 4340055 | 4205014 | 4204515</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/CPCEMZA" target="_blank" rel="noopener noreferrer">
+                    <img src="img/icon_fb.png" alt="Facebook" class="footer-icon">
+                </a>
+                <a href="https://www.instagram.com/cpcemendoza" target="_blank" rel="noopener noreferrer">
+                    <img src="img/icon_in.png" alt="Instagram" class="footer-icon">
+                </a>
+                <a href="https://twitter.com/cpcemza" target="_blank" rel="noopener noreferrer">
+                    <img src="img/icon_tw.png" alt="Twitter" class="footer-icon">
+                </a>
+                <a href="https://www.linkedin.com/in/consejo-profesional-de-ciencias-econ%C3%B3micas-mendoza-b15020175" target="_blank" rel="noopener noreferrer">
+                    <img src="img/icon_li.png" alt="Linkedin" class="footer-icon">
+                </a>
+            </div>
 
-        <div class="footer-logo">
-          <img src="img/logofooter.png" alt="CPCE" class="logofooter" />
+            <div class="footer-logo">
+              <picture>
+                  <img src="img/logofooter.png" data-light="img/logofooter.png" data-dark="img/logofooter-blanco.png" alt="Logo consejo" class="footerlogo">
+              </picture>
+          </div>
         </div>
-      </div>
     </div>
-  </footer>
+</footer>
+<script src="script.js"></script>
 </html>

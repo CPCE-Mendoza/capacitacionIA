@@ -535,6 +535,7 @@ footer {
 /* --- Modo Oscuro (Anulación Manual - botón) --- */
 
 
+
 body.dark-mode {
     background-color: #121212;
     color: #eee;

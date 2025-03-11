@@ -1,26 +1,35 @@
 /* styles.css */
 
-/* Reset básico y estilos generales */
+/* --- Reset y Estilos Generales --- */
+
 body {
-    font-family: "Open Sans", sans-serif; /* O la fuente que elijas */
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #000000; /* Negro para el texto principal */
-    background-color: #ffffff; /* Fondo blanco */
+    color: #333;  /* Color de texto principal (modo claro) */
+    background-color: #fff; /* Fondo blanco (modo claro) */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
 }
+
+/* --- Contenedor Principal --- */
 
 .container {
-    max-width: 1200px; /* Ancho máximo del contenido */
-    margin: 0 auto;  /* Centrar el contenido */
-    padding: 0 20px; /* Espacio a los lados */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Estilos del encabezado */
+/* --- Encabezado (Header) --- */
+
 header {
-    background-color: #337ab7;
-    color: #ffffff;
-    padding: 20px 0; /* Aumentamos el padding vertical */
+    background-color: #1c57b1; /* Azul del CPCE */
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;  /* Para el botón de modo oscuro */
+    z-index: 100;      /* Para que esté por encima de todo */
+    transition: background-color 0.3s ease; /* Transición para modo oscuro */
 }
 
 header .container {
@@ -30,13 +39,13 @@ header .container {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+    flex: 0 0 auto;  /* No crece ni se encoge, tamaño fijo */
+    margin-right: 20px; /* Espacio a la derecha del logo */
 }
 
-.logo img { /* Agregamos estilos específicos para la imagen del logo */
-    max-width: 200px; /* Aumentamos el tamaño máximo del logo (ajusta este valor) */
-    height: auto;     /* Mantiene la proporción de la imagen */
+.header-logo {
+    max-width: 200px; /* Tamaño máximo del logo */
+    height: auto;     /* Mantiene la proporción */
 }
 
 nav ul {
@@ -44,6 +53,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap; /* Permite que los elementos del menú se ajusten */
 }
 
 nav ul li {
@@ -51,34 +61,107 @@ nav ul li {
 }
 
 nav a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
-    transition: color 0.3s ease; /* Transición suave para el hover */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease, border-bottom 0.3s ease; /* Transiciones */
+    padding: 10px 15px;
+    display: inline-block;
 }
 
 nav a:hover {
-    color: #48b8d0; /* Celeste/Turquesa al pasar el mouse */
+    color: #48b8d0; /* Celeste/turquesa al pasar el mouse */
+    border-bottom: 2px solid #48b8d0;  /* Subrayado al pasar el ratón */
 }
 
-/* Estilos de las secciones */
+/* --- Botón de Modo Oscuro --- */
+
+.dark-mode-toggle {
+    margin-left: auto;   /* Empuja el botón a la derecha */
+    margin-right: 1rem; /*Un poco de margen*/
+    display: inline-flex; /* Usamos flexbox para alinear los elementos */
+    align-items: center;
+    gap: 5px;           /* Espacio entre los iconos y el slider */
+}
+
+.checkbox {
+    display: none; /* Oculta el checkbox real */
+}
+
+.slider {
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;  /* Gris claro (apagado) */
+    transition: background-color 0.4s ease;
+    border-radius: 30px;     /* Bordes redondeados */
+    display: inline-block; /*Para que ocupe solo el espacio necesario*/
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white; /* Círculo blanco (modo claro) */
+    transition: transform 0.4s ease, background-color 0.4s ease;
+    border-radius: 50%;
+}
+
+/* Estilos cuando el checkbox está "checked" (modo oscuro activado) */
+.checkbox:checked + .slider {
+    background-color: #444; /* Gris oscuro (encendido) */
+}
+
+.checkbox:checked + .slider::before {
+    transform: translateX(30px); /* Mueve el círculo */
+    background-color: #000;    /* Círculo negro */
+}
+
+/* Iconos (sol y luna) */
+.toggle-icon {
+    color: #ffffff; /* Color de los iconos */
+    font-size: 1.2rem;
+    user-select: none; /* Evita que se seleccionen los iconos */
+    transition: color 0.3s ease; /* Transición suave */
+}
+/* --- Secciones --- */
+
 section {
-    padding: 40px 0;
+    padding: 80px 0;
 }
 
+/* --- Títulos --- */
 h1 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
+    font-size: 3.5em;
+    margin-bottom: 40px;
     text-align: center;
-    color: #337ab7;
+    color: #333;
+    font-weight: 700;
+    transition: color 0.3s ease;
 }
 
 h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: #337ab7;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+    transition: color 0.3s ease;
 }
 
-/* Estilos de las tarjetas de curso */
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+/* --- Tarjetas de Curso --- */
+
 .curso-container {
     display: flex;
     flex-wrap: wrap;
@@ -87,7 +170,7 @@ h2 {
 }
 
 .curso {
-    width: calc(50% - 20px); /* Dos columnas */
+    width: calc(50% - 20px);
     box-sizing: border-box;
     border: 1px solid #ddd;
     padding: 20px;
@@ -95,9 +178,8 @@ h2 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;          /* ¡Hacemos .curso un contenedor flexible! */
-    flex-direction: column; /* Apilamos los elementos verticalmente */
-    /* justify-content: space-between;  <- Ya no es necesario aquí */
+    display: flex;          /* Añadido: Hacemos .curso un contenedor flex */
+    flex-direction: column; /* Añadido: Apilamos los elementos verticalmente */
 }
 
 .curso:hover {
@@ -105,31 +187,38 @@ h2 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/*  USANDO UN CONTENEDOR INTERMEDIO (Recomendado) */
+.curso-imagen-container { /* Nuevo contenedor */
+    width: 100%;
+    height: 250px; /* O la altura que desees, consistente */
+    overflow: hidden; /* ¡Importante! Recorta lo que sobresalga */
+    border-radius: 8px 8px 0 0; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espacio entre la imagen y el título */
+}
+
 .curso-imagen {
     width: 100%;
-    height: 250px;         /* Altura fija para las imágenes */
-    object-fit: cover;
-    object-position: center;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 15px;
-    max-width: 100%;      /* Asegura que no se salga del contenedor */
+    height: 100%;   /* La imagen ocupa todo el contenedor */
+    object-fit: cover; /* Cubre todo el contenedor, manteniendo proporción */
+    object-position: center; /* Centra la imagen */
+    max-width: 100%;  /* Buena práctica */
+    display: block;     /* Elimina espacio debajo de la imagen */
 }
 
 .curso h2 {
     font-size: 1.8em;
-    margin-bottom: 10px; /* Reducido el margen inferior */
+    margin-bottom: 10px;
     color: #337ab7;
-    /*  Alineación a la izquierda, por si acaso  */
     text-align: left;
 }
 
 .curso p {
-    margin-bottom: 5px; /* Reducido el margen inferior */
-     /*  Alineación a la izquierda  */
+    margin-bottom: 5px;
     text-align: left;
 }
-.curso p:last-of-type{
-   margin-bottom: 15px;
+
+.curso p:last-of-type {
+    margin-bottom: 15px;
 }
 
 .curso p strong {
@@ -137,12 +226,14 @@ h2 {
 }
 
 .curso .btn {
-    margin-top: auto;  /* ¡Empuja el botón hacia abajo! */
+    margin-top: auto;  /*  Empuja el botón hacia abajo */
     align-self: flex-start; /* Alinea el botón a la izquierda */
-    /* padding: 8px 16px;  <- Si quieres un botón más pequeño */
+}
+.curso .video-container{
+    margin-top: auto;
 }
 
-/* Estilos de los videos */
+/* --- Estilos de los videos --- */
 .video-container {
     position: relative;
     padding-bottom: 56.25%; /* Proporción 16:9 para el video */
@@ -159,13 +250,13 @@ h2 {
     height: 100%;
 }
 
-/* Estilos de los botones */
+/* --- Estilos de los botones --- */
 /* Usamos variables CSS para los colores del botón */
 :root {
   --boton-color: #ff4c4c;
   --boton-hover-color: #ff0707; /* Color más oscuro para el hover */
-  /* O, usando color-mix (más avanzado, pero recomendado): */
-  /* --boton-hover-color: color-mix(in srgb, var(--boton-color) 80%, black); */
+--boton-secundario-color: transparent;
+--boton-secundario-hover-color: #f0f0f0;
 }
 
 
@@ -184,211 +275,483 @@ h2 {
 .btn:hover {
     background-color: var(--boton-hover-color);
 }
+.btn-secundario {
+    background-color: var(--boton-secundario-color);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 23px;
+}
+   .btn-secundario:hover {
+        background-color: var(--boton-secundario-hover-color);
+        color: #000; /* Texto negro al hacer hover */
+        border-color: var(--boton-secundario-hover-color); /*Mantenemos el borde*/
+}
 
-/* Estilos del pie de página (versión mejorada) */
+/* --- Estilos del pie de página --- */
 footer {
-    background-color: #edeef0;  /* Mismo color de fondo */
-    padding: 30px 0; /*  Padding superior e inferior  */
-    color: #323e84; /*  Color de texto azul oscuro  */
-    font-size: 14px;  /* Tamaño de fuente */
+    background-color: #edeef0;
+    padding: 30px 0;
+    color: #323e84;
+    font-size: 14px;
 }
 
 .footer-content {
-    display: flex; /* Usamos Flexbox */
-    justify-content: space-between; /* Distribuye el espacio */
-    align-items: center; /* Centrado vertical */
-    flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .footer-info {
-    flex: 1 1 300px; /*  Crece, se encoge, base de 300px  */
-    margin-right: 20px;  /*  Margen a la derecha  */
-     text-align: left; /*Alineacion a la izquierda*/
-
+    flex: 1 1 300px;
+    margin-right: 20px;
+     text-align: left;
 }
 
 .footer-info p {
-    margin: 5px 0; /*  Margen superior e inferior para los párrafos  */
+    margin: 5px 0;
 }
 
 .footer-social {
-    flex: 0 0 auto; /* No crece, no se encoge, tamaño automático */
+    flex: 0 0 auto;
     margin-right: 20px;
-    display: flex; /* Para alinear los iconos horizontalmente */
-    align-items: center;/*Centrar verticalmente los iconos*/
-
+    display: flex;
+    align-items: center;
 }
 
 .footer-icon {
-    height: 24px; /*  Tamaño de los iconos  */
-    margin: 0 5px; /*  Espacio entre iconos  */
-     vertical-align: middle; /* Alinea verticalmente los íconos */
+    height: 24px;
+    margin: 0 5px;
+    vertical-align: middle;
 }
-
-.footer-logo {
-    flex: 0 0 auto;  /* No crece, no se encoge, tamaño automático */
-    text-align: right;
+.footer-logo{
+    display: flex;
+    justify-content: end;
 }
 
 .logofooter {
-    max-width: 180px; /*  Tamaño máximo del logo  */
-     height: auto;
+    max-width: 220px;
+}
+/* --- Hero Section (index.html) --- */
+
+.hero {
+    background-image: url('img/IA_bienvenida.png');  /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Necesario para el pseudo-elemento */
+    width: 100%;      /* Ocupa todo el ancho */
+    /*  Opcional: Si quieres una altura mínima: */
+     min-height: 500px; /* O la altura que necesites */
+    transition: background-color 0.3s ease;
 }
 
-/* Estilos para la sección Hero (index.html) */
-.hero {
+/*  Pseudo-elemento para la sombra y el degradado  */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   background: linear-gradient(to bottom, rgba(0, 78, 161, 0.8) 0%, rgba(0, 78, 161, 0) 40%, rgba(0, 78, 161, 0.8) 100%); /* Degradado de azul transparente a transparente */
+    box-shadow: inset 0px 0px 80px rgba(0, 0, 0, 0.5);  /*Sombra*/
+    z-index: 1;
+    border-radius: inherit;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 20px;
     text-align: center;
-    padding: 50px 0;
-    background-color: #f5f5f5; /* Color de fondo suave (opcional) */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
+	  color: white; /* Color del texto */
 }
 
 .hero h1 {
-    font-size: 3em; /* Título más grande */
-    margin-bottom: 20px;
-    color: #337ab7;
+  font-size: 4em;
+  margin-bottom: 30px;
+	color: #fff; /* Color del texto */
 }
 
 .hero p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    color: #555; /* Color de texto más oscuro */
+  font-size: 1.5em;
+  margin-bottom: 50px;
+	color: #fff; /* Color del texto */
+}
+/* Estilos del distintivo */
+.hero .certificacion {
+    background-color: #bb86fc; /* Color morado */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9em;
+    font-weight: 600;
 }
 
-.hero-image {
-    max-width: 80%; /* Ajusta el tamaño de la imagen */
-    height: auto;
-    margin-top: 30px;
-    border-radius: 8px; /* Bordes redondeados (opcional) */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave (opcional) */
+/* Estilos de las etiquetas */
+.hero .etiquetas {
+    margin-bottom: 1.5rem;
 }
 
-/* Estilos para la sección de Información (index.html) */
+.hero .etiqueta {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 0.8em;
+}
+
+.hero .btn {
+  margin-bottom: 25px;
+}
+/* --- Info Section (index.html) --- */
+
 .info {
-    padding: 60px 0;
-    text-align: center;
+ padding: 80px 0;
+ text-align: center;
+ position: relative;
+ z-index: 1;
 }
 
 .info h2 {
-    font-size: 2.2em;
-    margin-bottom: 40px;
-    color: #337ab7;
+ font-size: 2.5em;
+ margin-bottom: 50px;
+ color: #333;
 }
 
 .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño responsive */
-    gap: 30px;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 40px;
 }
 
 .info-item {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+ padding: 30px;
+ border: 1px solid #eee;
+border-radius: 12px;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.info-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .info-icon {
-    width: 50px; /* Tamaño de los iconos */
+    width: 60px;  /* O el tamaño que prefieras */
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-/* Estilos para la sección de Contacto Rápido (index.html) */
+/* --- Contacto Rápido (index.html) --- */
+
 .contacto-rapido {
-    padding: 40px 0;
-    text-align: center;
-    background-color: #f9f9f9; /* Fondo ligeramente diferente */
-    border-top: 1px solid #ddd;
+padding: 50px 0;
+text-align: center;
+background-color: #f5f5f5;
+border-top: 1px solid #eee;
+position: relative;
+z-index: 50;
+transition: background-color 0.3s ease, border-top-color 0.3s ease;
 }
 
 .contacto-rapido h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: #337ab7;
+font-size: 2em;
+margin-bottom: 20px;
+color: #333;
 }
 
 .contacto-rapido p {
-    margin-bottom: 10px;
+margin-bottom: 10px;
 }
 
-/* Estilos adicionales para las tarjetas de curso (capacitaciones.html) */
-.curso-imagen {
-    width: 100%;       /* Ocupa todo el ancho del contenedor */
-    height: 250px;     /* Altura fija (ajústala según tus necesidades) */
-    object-fit: cover; /*  ¡La clave! */
-    object-position: center; /* Centra la imagen */
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 15px;
-    max-width: 100%; /*Asegura que la imagen no se salga de su contenedor*/
+/* --- Modo Oscuro --- */
+
+/* --- Modo Oscuro --- */
+
+/* Estilos generales para modo oscuro (preferencia del sistema) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #eee;
+    }
+
+    header {
+        background-color: #1c57b1;
+    }
+
+    h1, h2, .curso h2, h3, strong {
+        color: #fff;
+    }
+
+    .curso p strong {
+        color: #fff;
+    }
+
+    a {
+        color: #80c4de;
+    }
+
+    nav a {
+        color: #fff; /* Color del texto en el modo oscuro */
+    }
+
+    nav a:hover {
+        color: #48b8d0;
+        border-bottom-color: #48b8d0;
+    }
+
+    .curso, .info-item {
+        background-color: #1f1f1f;
+        border-color: #444;
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    }
+    .curso:hover,
+    .info-item:hover {
+       box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+    }
+
+    .contacto-rapido {
+        background-color: #1A1A1A;
+        border-top-color: #444;
+    }
+
+     footer{
+        background-color: #1A1A1A;
+         color: #fff;
+    }
+    /*Modo oscuro: Hero Section*/
+    .hero::before{
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
+      box-shadow: inset 0px 0px 80px rgba(0, 0, 0, 0.7); /* Sombra más intensa en modo oscuro */
+    }
+    .hero .etiqueta{
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilos del slider para modo oscuro (preferencia del sistema) */
+    .slider {
+        background-color: #666;  /* Gris medio (apagado) */
+    }
+    .slider::before {
+        background-color: #fff; /* Círculo blanco (modo claro) */
+    }
+      .checkbox:checked + .slider {
+        background-color: #444;
+    }
+
+    .checkbox:checked + .slider::before {
+        background-color: #000;   /* Círculo negro (modo oscuro activo) */
+    }
+      .toggle-icon-moon {
+     color: #ffffff;
+    }
+     .toggle-icon-sun{
+      color:#ffffff;
+    }
+}
+
+/* --- Modo Oscuro (Anulación Manual - botón) --- */
+/* Estilos generales para modo oscuro (preferencia del sistema y manual) */
+body.dark-mode {
+    background-color: #121212;
+    color: #eee;
+}
+
+body.dark-mode header{
+  background-color: #1c57b1;
+}
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode .curso h2,
+body.dark-mode h3,
+body.dark-mode strong {
+    color: #fff;
+}
+
+body.dark-mode .curso p strong{
+   color: #fff;
+}
+
+body.dark-mode a {
+    color: #ffffff;
+}
+
+body.dark-mode nav a {
+     color: #fff; /* Color del texto en el modo oscuro */
+}
+
+body.dark-mode nav a:hover
+{
+    color: #48b8d0;
 
 }
 
-.curso p strong { /* Estilo para "Docente:" y "Fecha:" */
-    color: #337ab7; /* Color azul para resaltar */
-}
-.curso .video-container{
-  margin-top: 1rem;
+body.dark-mode .curso,
+body.dark-mode .info-item {
+    background-color: #1f1f1f;
+    border-color: #444;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
-/*  Media Queries para Responsive Design  */
+body.dark-mode .curso:hover,
+body.dark-mode .info-item:hover {
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+}
 
+body.dark-mode .contacto-rapido {
+    background-color: #1A1A1A;
+    border-top-color: #444;
+}
+
+body.dark-mode footer{
+   background-color: #1A1A1A;
+    color: #fff;
+}
+body.dark-mode .hero::before{
+   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
+   box-shadow: inset 0px 0px 80px rgba(0, 0, 0, 0.7); /* Sombra más intensa en modo oscuro */
+}
+body.dark-mode .hero .etiqueta{
+background-color: rgba(0, 0, 0, 0.2);
+}
+/* Estilos *específicos* para el slider en modo oscuro (anulación manual) */
+body.dark-mode .slider {
+  background-color: #666;
+}
+
+body.dark-mode .slider::before {
+  background-color: #fff;
+}
+body.dark-mode .checkbox:checked + .slider {
+    background-color: #444;
+}
+
+body.dark-mode .checkbox:checked + .slider::before {
+    background-color: #000;
+}
+ body.dark-mode .toggle-icon-moon {
+    color: #ffffff;
+ }
+ body.dark-mode .toggle-icon-sun {
+    color:#fff;
+ }
+
+/* --- Media Queries (Responsive) --- */
 
 @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .footer-info, .footer-social, .footer-logo{
-      margin: 10px 0;
-      width: 100%; /* Ocupa todo el ancho */
-      text-align: center; /* Centra el contenido */
-    }
-    .footer-logo {
-        text-align: center; /*Centrar imagen responsivo*/
-    }
-    .footer-info {
-        text-align: center;
-    }
-    .footer-social {
-        justify-content: center;
-    }
-}
-
-/*  Tablets  */
-@media (max-width: 768px) {
-    .curso {
-        width: 100%; /* Una columna en pantallas más pequeñas */
-    }
-
     header .container {
         flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+        margin-right: 0;
     }
 
     nav ul {
-        margin-top: 1rem;
         flex-direction: column;
+        width: 100%;
     }
 
     nav ul li {
         margin-left: 0;
-        margin-top: 0.5rem;
+        margin-bottom: 5px;
     }
-    .footer-social, .footer-logo {
-        text-align: center; /* Centra en pantallas pequeñas */
-    }
-}
 
-/*  Móviles  */
-@media (max-width: 480px) {
+    nav a {
+        padding: 5px 10px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+    }
+
     h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     h2 {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
 
-    .container {
-        padding: 0 10px; /*  Menos espacio lateral en móviles  */
+    .curso {
+        width: 100%;
+    }
+
+    .curso-imagen-container { /*  Estilos al CONTENEDOR */
+        width: 100%;
+        height: 250px;  /* O la altura que desees */
+        overflow: hidden; /*  ¡IMPORTANTE!  Recorta lo que sobresalga */
+        border-radius: 8px 8px 0 0;  /* Bordes redondeados */
+        margin-bottom: 15px;
+    }
+    
+    .curso-imagen {  /*  Estilos a la IMAGEN */
+        width: 100%;
+        height: 100%; /* O height: auto; */
+        object-fit: cover;
+        object-position: center;
+        max-width: 100%; /* Buena práctica, siempre */
+        display: block;  /* Elimina espacio extra debajo de la imagen */
+    }
+
+    .hero h1 {
+        font-size: 2.8em;
+    }
+
+    .hero-content {
+        padding: 60px 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-social,
+    .footer-logo {
+        margin: 10px 0;
+    }
+
+    .footer-info,
+    .footer-social {
+        text-align: center;
+    }
+
+    .footer-logo {
+        text-align: center;
+        width: 100%;
+    }
+     .dark-mode-toggle{
+      margin: 10px 0;
     }
 }
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        .hero-content {
+            padding: 40px 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
