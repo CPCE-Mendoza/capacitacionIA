@@ -2,52 +2,45 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleCheckbox = document.getElementById("toggleCheckbox");
     const body = document.body;
     const images = document.querySelectorAll(".info-icon");
-    const toggleIcons = document.querySelectorAll(".toggle-icon");
-    const links = document.querySelectorAll("a[href^='#']"); // Enlaces internos
-    const footerLogo = document.querySelector(".footerlogo"); // Seleccionamos el logo del footer
+    const footerLogo = document.querySelector(".footerlogo");
 
-    // 📌 Función para cambiar las imágenes según el modo
+    // 📌 Función para cambiar imágenes según el tema
     function changeImages(mode) {
         images.forEach(img => {
-            img.src = mode === "dark" ? img.dataset.dark : img.dataset.light;
+            const lightSrc = img.getAttribute("data-light");
+            const darkSrc = img.getAttribute("data-dark");
+
+            if (mode === "dark" && darkSrc) {
+                img.src = darkSrc;
+            } else if (lightSrc) {
+                img.src = lightSrc;
+            }
         });
 
-        // Cambiar la imagen del logo en el footer
         if (footerLogo) {
-            footerLogo.src = mode === "dark" ? footerLogo.dataset.dark : footerLogo.dataset.light;
+            const footerLight = footerLogo.getAttribute("data-light");
+            const footerDark = footerLogo.getAttribute("data-dark");
+
+            footerLogo.src = mode === "dark" ? footerDark : footerLight;
         }
     }
 
-    // 📌 Cargar preferencia de modo oscuro desde localStorage
-    const initialMode = localStorage.getItem("darkMode") === "enabled" ? "dark" : "light";
-    body.classList.toggle("dark-mode", initialMode === "dark");
-    toggleCheckbox.checked = initialMode === "dark"; // Aseguramos que el checkbox refleje el estado
+    // 📌 Cargar preferencia del usuario o detectar el sistema
+    const savedTheme = localStorage.getItem("theme") || 
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
-    // 📌 Configurar las imágenes según el modo al cargar la página
-    changeImages(initialMode);
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    body.classList.toggle("dark-mode", savedTheme === "dark");
+    toggleCheckbox.checked = savedTheme === "dark"; 
+    changeImages(savedTheme); // Llamar a la función al cargar
 
-    // 📌 Evento para cambiar el modo claro/oscuro al hacer click en el toggleCheckbox
+    // 📌 Evento para cambiar el tema
     toggleCheckbox.addEventListener("change", () => {
-        const mode = toggleCheckbox.checked ? "dark" : "light";
-        body.classList.toggle("dark-mode", mode === "dark");
-        localStorage.setItem("darkMode", mode === "dark" ? "enabled" : "disabled");
-        changeImages(mode);
-    });
-
-    // 📌 Implementar smooth-scroll en los enlaces de navegación
-    links.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 50, // Ajuste opcional según tu navbar
-                    behavior: "smooth"
-                });
-            }
-        });
+        const newTheme = toggleCheckbox.checked ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        body.classList.toggle("dark-mode", newTheme === "dark");
+        localStorage.setItem("theme", newTheme);
+        changeImages(newTheme); // Llamar a la función al cambiar
     });
 
     // 📌 Activar lazy-loading en imágenes

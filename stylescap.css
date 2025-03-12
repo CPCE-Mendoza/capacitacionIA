@@ -71,8 +71,8 @@ nav a {
 }
 
 nav a:hover {
-    color: #48b8d0; /* Celeste/turquesa al pasar el mouse */
-    border-bottom: 2px solid #48b8d0;  /* Subrayado al pasar el ratón */
+    color: #48b8d0; 
+
 }
 
 /* --- Botón de Modo Oscuro --- */
