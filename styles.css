@@ -627,100 +627,94 @@ body.dark-mode .checkbox:checked + .slider::before {
 
 /* --- Media Queries (Responsive) --- */
 
+/* 📌 Para tablets y pantallas medianas */
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .logo {
         margin-bottom: 10px;
-        margin-right: 0;
     }
 
     nav ul {
         flex-direction: column;
         width: 100%;
+        text-align: center;
     }
 
     nav ul li {
-        margin-left: 0;
-        margin-bottom: 5px;
-    }
-
-    nav a {
-        padding: 5px 10px;
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: left;
-    }
-
-    h1 {
-        font-size: 2.5em;
-    }
-
-    h2 {
-        font-size: 1.8em;
-    }
-
-    .curso {
-        width: 100%;
-    }
-
-    .curso-imagen {
-        height: auto;
-    }
-
-    .hero h1 {
-        font-size: 2.8em;
+        margin: 5px 0;
     }
 
     .hero-content {
-        padding: 60px 20px;
+        text-align: center;
+        padding: 50px 15px;
     }
 
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.3em;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr; /* Secciones en una sola columna */
+    }
+
+    /* 📌 Footer responsivo */
     .footer-content {
         flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .footer-social,
-    .footer-logo {
-        margin: 10px 0;
+        align-items: center;
+        text-align: center;
     }
 
     .footer-info,
-    .footer-social {
-        text-align: center;
+    .footer-social,
+    .footer-logo {
+        margin-bottom: 15px;
     }
 
-    .footer-logo {
-        text-align: center;
-        width: 100%;
+    .footer-logo img {
+        max-width: 150px; /* Ajuste del tamaño del logo */
     }
-    .dark-mode-toggle{
-      margin: 10px 0;
+    
+    .dark-mode-toggle {
+        margin: 10px 0;
     }
 }
 
+/* 📌 Para móviles pequeños */
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2em;}
-
-        .hero p {
-            font-size: 1.2em;
-        }
-    
-        .hero-content {
-            padding: 40px 20px;
-        }
-    
-        h2 {
-            font-size: 1.5em;
-        }
-    
-        .info-grid {
-            grid-template-columns: 1fr;
-        }
+        font-size: 2.2em;
     }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .hero-content {
+        padding: 40px 10px;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 📌 Footer en móviles */
+    .footer-content {
+        text-align: center;
+    }
+
+    .footer-logo img {
+        max-width: 120px; /* Ajuste adicional para pantallas pequeñas */
+    }
+}
