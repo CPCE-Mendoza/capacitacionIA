@@ -37,9 +37,9 @@
     <main class="container">
       <section>
         <h1>Capacitaciones de Inteligencia Artificial</h1>
+        <div class="curso-container">
 
 
-  <div class="curso-container">
   <div class="curso">
     <div class="curso-cabecera">
       <img
@@ -51,17 +51,21 @@
     </div>
     <div class="curso-detalles">
       <p>
-      La Inteligencia Artificial está transformando radicalmente la contabilidad. Este curso te introduce a las herramientas y conceptos clave que te permitirán automatizar tareas, realizar análisis predictivos y detectar fraudes con una eficiencia sin precedentes. Descubre cómo la IA te liberará de lo rutinario para que te enfoques en el análisis estratégico y te conviertas en un contador del futuro.
-    </p>
+        La Inteligencia Artificial está transformando radicalmente la contabilidad. Este curso te introduce a las herramientas y conceptos clave que te permitirán automatizar tareas, realizar análisis predictivos y detectar fraudes con una eficiencia sin precedentes. Descubre cómo la IA te liberará de lo rutinario para que te enfoques en el análisis estratégico y te conviertas en un contador del futuro.
+      </p>
       <p><strong>Docente:</strong> Cdora. Tania Damiani</p>
       <p><strong>Fecha:</strong> 27 de Junio de 2024</p>
+      <a
+        href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=465"
+        class="btn btn-ingresar"
+      >Ingresar -></a>
     </div>
     <a
-      href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=465"
-      class="btn"
-    >Más Información</a>
+      href="#"
+      class="btn btn-toggle-detalles"
+    >+ Información</a>
   </div>
-  <div class="curso-container">
+
   <div class="curso">
     <div class="curso-cabecera">
       <img
@@ -78,11 +82,15 @@
       </p>
       <p><strong>Docente:</strong> Raymond Schefer</p>
       <p><strong>Fecha:</strong> 07 de Agosto de 2024</p>
+      <a
+        href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=479"
+        class="btn btn-ingresar"
+      >Ingresar -></a>
     </div>
     <a
-      href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=479"
-      class="btn"
-    >Más Información</a>
+      href="#"
+      class="btn btn-toggle-detalles"
+    >+ Información</a>
   </div>
 
   <div class="curso">
@@ -108,11 +116,15 @@
       </p>
       <p><strong>Docente:</strong> Cdora. Tania Damiani</p>
       <p><strong>Fecha:</strong> 15 de Agosto de 2024</p>
+      <a
+        href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=482"
+        class="btn btn-ingresar"
+      >Ingresar -></a>
     </div>
     <a
-      href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=482"
-      class="btn"
-    >Más Información</a>
+      href="#"
+      class="btn btn-toggle-detalles"
+    >+ Información</a>
   </div>
 
   <div class="curso">
@@ -130,11 +142,15 @@
       </p>
       <p><strong>Docente:</strong> Tania Damiani</p>
       <p><strong>Fecha:</strong> 20 de Septiembre de 2024</p>
+      <a
+        href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=494"
+        class="btn btn-ingresar"
+      >Ingresar -></a>
     </div>
     <a
-      href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=494"
-      class="btn"
-    >Más Información</a>
+      href="#"
+      class="btn btn-toggle-detalles"
+    >+ Información</a>
   </div>
 
   <div class="curso">
@@ -152,13 +168,18 @@
       </p>
       <p><strong>Docente:</strong> Tania Damiani</p>
       <p><strong>Fecha:</strong> 06 de Diciembre de 2024</p>
+      <a
+        href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=479" 
+        class="btn btn-ingresar"
+      >Ingresar -></a>
     </div>
     <a
-      href="https://micuenta.cpcemza.org.ar/capacitacion_.php?ID=479"
-      class="btn"
-    >Más Información</a>
+      href="#"
+      class="btn btn-toggle-detalles"
+    >+ Información</a>
   </div>
 </div>
+
         </div>
       </section>
     </main>
@@ -200,28 +221,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const cursos = document.querySelectorAll('.curso');
 
   cursos.forEach(function(curso) {
-    const botonMasInfo = curso.querySelector('.btn'); // Tu botón de "Más Información"
-    const detallesDiv = curso.querySelector('.curso-detalles'); // El div que contiene los detalles
-    
-    if (botonMasInfo && detallesDiv) {
-      botonMasInfo.addEventListener('click', function(event) {
-        // Siempre prevenimos la acción por defecto inicialmente,
-        // ya que decidiremos si redirigir o no.
-        event.preventDefault(); 
+    const botonToggleDetalles = curso.querySelector('.btn-toggle-detalles'); // El botón "Más Información"
+    const detallesDiv = curso.querySelector('.curso-detalles');
+    // El botón "Ingresar a la capacitación" está dentro de detallesDiv y funcionará como un enlace normal.
+    // No necesita un event listener de JS específico si su única acción es redirigir.
 
-        const enlaceRedireccion = this.href; // 'this' se refiere al botón que fue clickeado
+    if (botonToggleDetalles && detallesDiv) {
+      botonToggleDetalles.addEventListener('click', function(event) {
+        event.preventDefault(); // Previene la acción del enlace '#'
 
-        // Comprobar si los detalles ya están visibles
+        // Alterna la clase 'visible' para mostrar u ocultar los detalles
+        detallesDiv.classList.toggle('visible');
+
+        // Opcional: Cambiar el texto del botón "Más Información" / "Menos Información"
         if (detallesDiv.classList.contains('visible')) {
-          // Si ya están visibles, este es el "segundo clic" (o posterior)
-          // y procedemos a redirigir.
-          window.location.href = enlaceRedireccion;
+          this.textContent = '- Información'; // 'this' se refiere al botonToggleDetalles
         } else {
-          // Si no están visibles, este es el "primer clic".
-          // Mostramos los detalles añadiendo la clase 'visible'.
-          detallesDiv.classList.add('visible');
-          // No hacemos nada más; el usuario ahora puede ver los detalles.
-          // La próxima vez que haga clic en este mismo botón, la condición anterior será verdadera.
+          this.textContent = '+ Información';
         }
       });
     }

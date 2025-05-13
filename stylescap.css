@@ -243,11 +243,40 @@ h3 {
     background-color: #286090;
 }
 
+.btn {
+  display: inline-block; /* O block, según tu diseño */
+  padding: 10px 15px;
+  background-color: #337ab7;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px; /* Margen general para los botones */
+}
+
+.btn:hover {
+  background-color: #286090;
+}
+
+.btn-toggle-detalles {
+    margin-top: auto; /* Esto empujará el botón "Más Información" hacia abajo si es el último hijo directo de .curso y .curso es flex-column */
+    align-self: flex-start; /* Para alinearlo a la izquierda */
+}
+
+/* El botón "Ingresar a la capacitación" está dentro de .curso-detalles */
+.btn-ingresar {
+  /* Estilos adicionales si quieres que este botón sea diferente */
+  /* background-color: #5cb85c; /* Ejemplo: un color verde */
+  display: block; /* Para que ocupe su propia línea dentro de los detalles si se desea */
+  width: fit-content; /* Para que no ocupe todo el ancho si es display:block */
+  margin-top: 15px; /* Espacio sobre este botón dentro de los detalles */
+}
+
 .curso-detalles {
-  max-height: 0; /* Oculto por defecto y listo para animar altura */
-  overflow: hidden; /* Esencial para que el contenido no se vea cuando max-height es 0 */
-  transition: max-height 0.4s ease-in-out; /* Duración y tipo de animación */
-  /* Aseguramos que no haya márgenes/paddings que causen espacio cuando está oculto */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 0;
@@ -255,11 +284,10 @@ h3 {
 }
 
 .curso-detalles.visible {
-  max-height: 1000px; /* Un valor suficientemente grande para que quepa cualquier contenido.
-                         La transición se detendrá en la altura real del contenido. */
-  /* Añadimos un poco de padding o margen cuando está visible para espaciarlo */
-  margin-top: 15px; /* Espacio entre la cabecera y los detalles */
-  margin-bottom: 15px; /* Espacio entre los detalles y el botón */
+  max-height: 1000px; /* Ajusta si es necesario un valor mayor */
+  margin-top: 15px;   /* Espacio sobre los detalles */
+  padding-bottom: 15px; /* Espacio debajo del último elemento de los detalles (antes de que se cierre el div) */
+                          /* El botón "Más Información" está fuera de este div */
 }
 
 /* Ajuste al botón si es necesario, aunque el margin-top: auto debería seguir funcionando bien */
