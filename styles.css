@@ -262,20 +262,117 @@ h3 {
 
 .btn:hover {
   background-color: #286090;
+  transform: translateY(-1px); /* Ligero efecto al pasar el mouse */
 }
+
+.btn:active {
+  transform: translateY(0px); /* Efecto al hacer clic */
+}
+
+/* Estilos para los SVGs dentro de los botones */
+.btn svg {
+  /* Los SVGs que te proporcioné tenían width="20" height="20".
+     Estos se centrarán bien en un botón de 34x34px.
+     Si deseas que el icono en sí sea más pequeño, ajusta los atributos
+     width y height directamente en la etiqueta <svg> de tu HTML
+     (por ejemplo, a width="18" height="18").
+     El atributo 'stroke="currentColor"' en el SVG es ideal para heredar el color.
+  */
+}
+
+/* === Botón para Mostrar/Ocultar Detalles (+ / -) === */
+.btn-toggle-detalles {
+  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
+  margin-top: auto;       /* Empuja este botón al final del contenedor .curso */
+  align-self: flex-start; /* Lo alinea a la izquierda */
+}
+
+/* === Botón para Ingresar a la Capacitación (flecha) === */
+.btn-ingresar {
+  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
+  display: block;         /* Si quieres que ocupe su propia línea dentro de .curso-detalles */
+  /* width: fit-content; */ /* Esta propiedad es anulada por el width fijo de .btn para mantener la forma redonda. */
+  margin-top: 20px;       /* Espacio arriba de este botón, dentro de .curso-detalles */
+  margin-left: 0;         /* Alineado a la izquierda por defecto como bloque */
+  /* Si quisieras centrar este botón (que ahora es un círculo pequeño): */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+}
+
+
+/* === Estilos para el Acordeón de Detalles === */
+.curso-detalles {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  /* Reseteamos márgenes/paddings para cuando está colapsado */
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.curso-detalles.visible {
+  max-height: 1000px; /* Un valor suficientemente grande para el contenido */
+  margin-top: 15px;   /* Espacio entre .curso-cabecera y el contenido de .curso-detalles */
+  padding-bottom: 1px; /* Evita colapso de margen si el último hijo (ej. .btn-ingresar) tiene margen superior */
+}
+
+
+.curso .btn {
+  display: inline-flex; /* Para alinear y centrar el SVG (icono) dentro del botón */
+  align-items: center;
+  justify-content: center;
+  
+  /* HACIÉNDOLOS MÁS CHICOS Y REDONDOS */
+  width: 34px;          /* Ancho fijo para controlar el tamaño */
+  height: 34px;         /* Alto fijo para controlar el tamaño */
+  padding: 0;           /* Quitamos padding; el tamaño lo dan width/height y el SVG se centra */
+  border-radius: 50%;   /* Esto los hace redondos */
+  
+  background-color: #337ab7;
+  color: white;         /* El SVG heredará este color para su 'stroke' si usa 'currentColor' */
+  text-decoration: none;
+  border: none;         /* Quita bordes por defecto */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  line-height: 1;       /* Ayuda a la alineación vertical del SVG */
+}
+
+.curso .btn:hover {
+    background-color: #286090;
+}
+
+
+
 
 .btn-toggle-detalles {
     margin-top: auto; /* Esto empujará el botón "Más Información" hacia abajo si es el último hijo directo de .curso y .curso es flex-column */
     align-self: flex-start; /* Para alinearlo a la izquierda */
 }
 
-.btn:hover {
-  background-color: #286090;
-  transform: translateY(-1px); /* Ligero efecto al pasar el mouse */
+/* El botón "Ingresar a la capacitación" está dentro de .curso-detalles */
+.btn-ingresar {
+  display: block; /* Para que ocupe su propia línea dentro de los detalles si se desea */
+  width: fit-content; /* Para que no ocupe todo el ancho si es display:block */
+  margin-top: 15px; /* Espacio sobre este botón dentro de los detalles */
 }
 
-.btn:active {
-  transform: translateY(0px); /* Efecto al hacer clic */
+.curso-detalles {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.curso-detalles.visible {
+  max-height: 1000px; /* Ajusta si es necesario un valor mayor */
+  margin-top: 15px;   /* Espacio sobre los detalles */
+  padding-bottom: 15px; /* Espacio debajo del último elemento de los detalles (antes de que se cierre el div) */
+                          /* El botón "Más Información" está fuera de este div */
 }
 
 /* Estilos para los SVGs dentro de los botones */
