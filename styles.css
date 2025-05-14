@@ -348,6 +348,24 @@ h3 {
   line-height: 1;       /* Ayuda a la alineación vertical del SVG */
 }
 
+.btn-toggle-detalles {
+  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
+  margin-top: auto;       /* Empuja este botón al final del contenedor .curso */
+  align-self: flex-start; /* Lo alinea a la izquierda */
+}
+
+/* === Botón para Ingresar a la Capacitación (flecha) === */
+.btn-ingresar {
+  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
+  display: block;         /* Si quieres que ocupe su propia línea dentro de .curso-detalles */
+  /* width: fit-content; */ /* Esta propiedad es anulada por el width fijo de .btn para mantener la forma redonda. */
+  margin-top: 20px;       /* Espacio arriba de este botón, dentro de .curso-detalles */
+  margin-left: 0;         /* Alineado a la izquierda por defecto como bloque */
+  /* Si quisieras centrar este botón (que ahora es un círculo pequeño): */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+}
+
 .curso .btn:hover {
     background-color: #286090;
 }
