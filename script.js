@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 📌 Cargar preferencia del usuario o detectar el sistema
+    //  Cargar preferencia del usuario o detectar el sistema
     const savedTheme = localStorage.getItem("theme") ||
         (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleCheckbox.checked = savedTheme === "dark";
     changeImages(savedTheme); // Llamar a la función al cargar
 
-    // 📌 Evento para cambiar el tema
+    //  Evento para cambiar el tema
     toggleCheckbox.addEventListener("change", () => {
         const newTheme = toggleCheckbox.checked ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", newTheme);
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         changeImages(newTheme); // Llamar a la función al cambiar
     });
 
-    // 📌 Activar lazy-loading en imágenes
+    //  Activar lazy-loading en imágenes
     document.querySelectorAll("img").forEach(img => {
         img.loading = "lazy";
     });
