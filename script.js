@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll(".info-icon");
     const footerLogo = document.querySelector(".footerlogo");
 
-    // 📌 Función para cambiar imágenes según el tema
+    //  Función para cambiar imágenes según el tema
     function changeImages(mode) {
         images.forEach(img => {
             const lightSrc = img.getAttribute("data-light");
