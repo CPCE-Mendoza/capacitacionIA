@@ -182,28 +182,31 @@ h3 {
 }
 
 .curso-cabecera {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 10px; /* CAMBIO: Reducido de 15px para hacerlo "más fino" */
+ display: flex;
+    align-items: center; /* Mantiene la alineación vertical de imagen, título y botón */
+    /* gap: 15px; */    /* Eliminamos el gap general aquí para controlar espaciado individualmente */
+    margin-bottom: 10px;
 }
 
 .curso-imagen-container {
-    width: 60px;  /* CAMBIO: Reducido ligeramente de 70px */
-    height: 60px; /* CAMBIO: Reducido ligeramente de 70px */
+width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 4px;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+    margin-right: 12px; /* Espacio entre la imagen y el título */
 }
 
 .curso-cabecera h2 {
-    margin: 0;
-    font-size: 1.5em; /* CAMBIO: Ligeramente reducido de 1.6em */
+ margin: 0;
+    font-size: 1.5em;
     line-height: 1.3;
-    color: #337ab7;
+    color: #337ab7; /* O el color que tenías definido */
     text-align: left;
     font-weight: 700;
     transition: color 0.3s ease;
+    flex-grow: 1;     /* NUEVO: Hace que el título ocupe el espacio disponible, empujando el botón a la derecha */
+    margin-right: 10px; /* NUEVO: Espacio entre el final del título y el botón de toggle */
 }
 
 .curso p {
@@ -275,8 +278,10 @@ h3 {
 
 /* === Botón para Mostrar/Ocultar Detalles (+ / -) === */
 .btn-toggle-detalles {
-    margin-top: 10px; /* CAMBIO: De 'auto' a un margen fijo para consistencia, 'auto' lo empujaba mucho */
-    align-self: flex-end; /* CORRECTO: Alinea a la derecha de la tarjeta .curso */
+ /* Hereda los estilos de .btn (redondo, azul, tamaño 32x32, etc.) */
+    /* margin-top: 10px; */  /* ELIMINADO: Ya no necesita margen superior, se alinea con el título */
+    /* align-self: flex-end; */ /* ELIMINADO: Su posición ahora es dentro del flex de .curso-cabecera */
+    flex-shrink: 0;       /* NUEVO: Evita que el botón se encoja si el título es muy largo */
 }
 
 /* === Botón para Ingresar a la Capacitación (flecha) === */
