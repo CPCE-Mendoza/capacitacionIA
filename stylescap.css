@@ -286,12 +286,12 @@ width: 60px;
 
 /* === Botón para Ingresar a la Capacitación (flecha) === */
 .btn-ingresar {
-    display: block; /* Mantenido para que use márgenes correctamente */
-    margin-top: 15px;    /* CAMBIO: Reducido de 20px */
+    /* Ya no necesita 'display: block;' aquí, hereda 'inline-flex' de .btn,
+     lo que asegura que el SVG interno esté centrado. */
+  margin-top: 15px;
+  align-self: flex-end; /* NUEVO: Alinea este botón a la derecha de su contenedor flex padre (.curso-detalles.visible) */ 
     margin-left: auto;   /* NUEVO: Empuja el botón a la derecha dentro de .curso-detalles */
-    margin-right: 0;     /* Asegura alineación derecha */
-    /* width: 32px; ya heredado de .btn */
-    /* height: 32px; ya heredado de .btn */
+
 }
 
 /* --- Estilos de los videos --- */

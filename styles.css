@@ -349,9 +349,12 @@ width: 60px;
 
 /* El botón "Ingresar a la capacitación" está dentro de .curso-detalles */
 .btn-ingresar {
-  display: block; /* Para que ocupe su propia línea dentro de los detalles si se desea */
-  width: fit-content; /* Para que no ocupe todo el ancho si es display:block */
-  margin-top: 15px; /* Espacio sobre este botón dentro de los detalles */
+    /* Ya no necesita 'display: block;' aquí, hereda 'inline-flex' de .btn,
+     lo que asegura que el SVG interno esté centrado. */
+  margin-top: 15px;
+  align-self: flex-end; /* NUEVO: Alinea este botón a la derecha de su contenedor flex padre (.curso-detalles.visible) */ 
+    margin-left: auto;   /* NUEVO: Empuja el botón a la derecha dentro de .curso-detalles */
+
 }
 
 .curso-detalles {
