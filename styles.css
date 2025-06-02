@@ -160,30 +160,26 @@ h3 {
 }
 
 /* --- Tarjetas de Curso --- */
-
-.cursos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Distribuye dinámicamente */
-    gap: 20px; /* Espacio entre los cursos */
-}
-
+/* --- Tarjetas de Curso --- */
 .curso-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    /* align-items: center; NO es necesario si los .curso son width: 100% */
+    gap: 20px; /* Espacio vertical entre tarjetas */
 }
 
 .curso {
-    width: 100%;
-    /* max-width: 800px; */
+    /* max-width: 680px; */ /* ELIMINADO para que sea "alargado a lo ancho" */
+    width: 100%;        /* Ocupa el ancho del contenedor padre (.container > section) */
     box-sizing: border-box;
     border: 1px solid #ddd;
-    padding: 20px;
+    padding: 12px 15px; /* CAMBIO: Padding vertical reducido a 12px, horizontal 15px */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    display: flex; /* Mantenemos flex para .curso */
-    flex-direction: column; /* Los elementos principales (.curso-cabecera, p, a) se apilan */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .curso:hover {
@@ -191,61 +187,64 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* --- NUEVOS ESTILOS Y AJUSTES --- */
 .curso-cabecera {
-    display: flex; /* Esto ya debería estar para colocar imagen y título en línea */
-    align-items: center; /* << ESTE ES EL CAMBIO CLAVE para el centrado vertical */
-    gap: 15px; /* Espacio horizontal entre la imagen y el título (ajusta si es necesario) */
-    margin-bottom: 15px; /* Espacio debajo de la cabecera, antes de los detalles */
+ display: flex;
+    align-items: center; /* Mantiene la alineación vertical de imagen, título y botón */
+    /* gap: 15px; */    /* Eliminamos el gap general aquí para controlar espaciado individualmente */
+    margin-bottom: 10px;
 }
 
 .curso-imagen-container {
-    width: 70px;  /* Ancho que definimos para la imagen */
-    height: 70px; /* Alto que definimos para la imagen */
+width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 4px;
     flex-shrink: 0; /* Evita que la imagen se encoja */
+    margin-right: 12px; /* Espacio entre la imagen y el título */
 }
 
-/* Ajuste para el h2 que ahora está dentro de .curso-cabecera */
 .curso-cabecera h2 {
-    margin: 0; /* Importante para una alineación precisa */
-    font-size: 1.6em; /* O el tamaño de fuente que estés usando */
-    line-height: 1.3; /* Ajusta el interlineado si el título tiene múltiples líneas */
-    color: #337ab7; /* O el color que estés usando */
-    text-align: left; /* O el que estés usando */
-    /* No se necesita flex-grow: 1 aquí a menos que quieras un comportamiento específico de crecimiento */
+ margin: 0;
+    font-size: 1.5em;
+    line-height: 1.3;
+    color: #337ab7; /* O el color que tenías definido */
+    text-align: left;
+    font-weight: 700;
+    transition: color 0.3s ease;
+    flex-grow: 1;     /* NUEVO: Hace que el título ocupe el espacio disponible, empujando el botón a la derecha */
+    margin-right: 10px; /* NUEVO: Espacio entre el final del título y el botón de toggle */
 }
-/* --- FIN DE NUEVOS ESTILOS Y AJUSTES --- */
 
 .curso p {
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* CAMBIO: Reducido de 10px */
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.5; /* CAMBIO: Ligeramente reducido para compacidad */
 }
 
-.curso p:nth-last-of-type(1) {
-    margin-bottom: 20px;
+.curso-detalles p:last-of-type {
+    margin-bottom: 0;
 }
 
 .curso p strong {
     color: #337ab7;
+    transition: color 0.3s ease;
 }
 
-.curso .btn {
-    margin-top: auto; /* Esto sigue funcionando para empujar el botón al final de la tarjeta .curso */
-    align-self: flex-start;
-    padding: 10px 15px;
-    background-color: #337ab7;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease;
+/* === Estilos para el Acordeón de Detalles === */
+.curso-detalles {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-.curso .btn:hover {
-    background-color: #286090;
+.curso-detalles.visible {
+    max-height: 1000px;
+    margin-top: 10px;   /* CAMBIO: Reducido de 15px */
+    padding-bottom: 1px;
 }
 
 .btn {
@@ -271,32 +270,29 @@ h3 {
 
 /* Estilos para los SVGs dentro de los botones */
 .btn svg {
-  /* Los SVGs que te proporcioné tenían width="20" height="20".
-     Estos se centrarán bien en un botón de 34x34px.
-     Si deseas que el icono en sí sea más pequeño, ajusta los atributos
-     width y height directamente en la etiqueta <svg> de tu HTML
-     (por ejemplo, a width="18" height="18").
-     El atributo 'stroke="currentColor"' en el SVG es ideal para heredar el color.
-  */
+    display: block; /* Ayuda a eliminar espacios extraños que a veces tienen los elementos inline */
+  margin: auto;
+    /* Los SVGs en tu HTML tienen width="20" height="20".
+       Para botones de 32x32, podrías considerar reducir el SVG a 16x16 o 18x18 en el HTML
+       para más espacio alrededor, o dejarlo en 20x20 si te gusta cómo se ve. */
 }
 
 /* === Botón para Mostrar/Ocultar Detalles (+ / -) === */
 .btn-toggle-detalles {
-  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
-  margin-top: auto;       /* Empuja este botón al final del contenedor .curso */
-  align-self: flex-start; /* Lo alinea a la izquierda */
+ /* Hereda los estilos de .btn (redondo, azul, tamaño 32x32, etc.) */
+    /* margin-top: 10px; */  /* ELIMINADO: Ya no necesita margen superior, se alinea con el título */
+    /* align-self: flex-end; */ /* ELIMINADO: Su posición ahora es dentro del flex de .curso-cabecera */
+    flex-shrink: 0;       /* NUEVO: Evita que el botón se encoja si el título es muy largo */
 }
 
 /* === Botón para Ingresar a la Capacitación (flecha) === */
 .btn-ingresar {
-  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
-  display: block;         /* Si quieres que ocupe su propia línea dentro de .curso-detalles */
-  /* width: fit-content; */ /* Esta propiedad es anulada por el width fijo de .btn para mantener la forma redonda. */
-  margin-top: 20px;       /* Espacio arriba de este botón, dentro de .curso-detalles */
-  margin-left: 0;         /* Alineado a la izquierda por defecto como bloque */
-  /* Si quisieras centrar este botón (que ahora es un círculo pequeño): */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
+    display: block; /* Mantenido para que use márgenes correctamente */
+    margin-top: 15px;    /* CAMBIO: Reducido de 20px */
+    margin-left: auto;   /* NUEVO: Empuja el botón a la derecha dentro de .curso-detalles */
+    margin-right: 0;     /* Asegura alineación derecha */
+    /* width: 32px; ya heredado de .btn */
+    /* height: 32px; ya heredado de .btn */
 }
 
 
