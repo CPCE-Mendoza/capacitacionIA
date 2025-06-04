@@ -56,11 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (carousel) {
         const images = carousel.querySelectorAll('.hero-image');
         let currentImageIndex = 0;
-        const intervalTime = 5000; // 5 segundos por imagen (ajústalo)
+        const intervalTime = 5000; // 5 segundos por imagen
         let intervalId; // Declaramos la variable fuera de la función
 
         function showNextImage() {
-            // Oculta la imagen actual (si la hay)
+            // Oculta la imagen actual 
             if (images[currentImageIndex]) {
                 images[currentImageIndex].classList.remove('active');
             }
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Calcula el índice de la siguiente imagen
             currentImageIndex = (currentImageIndex + 1) % images.length;
 
-            // Muestra la siguiente imagen (si existe)
+            // Muestra la siguiente imagen
             if (images[currentImageIndex]) {
                 images[currentImageIndex].classList.add('active');
             }
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(intervalId);
         });
         carousel.addEventListener('mouseleave', () => {
-            intervalId = setInterval(showNextImage, intervalTime); //Corrección
+            intervalId = setInterval(showNextImage, intervalTime); 
         });
     }
 });

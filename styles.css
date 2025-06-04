@@ -160,20 +160,19 @@ h3 {
 }
 
 /* --- Tarjetas de Curso --- */
-/* --- Tarjetas de Curso --- */
 .curso-container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; NO es necesario si los .curso son width: 100% */
-    gap: 20px; /* Espacio vertical entre tarjetas */
+  
+    gap: 20px; 
 }
 
 .curso {
-    /* max-width: 680px; */ /* ELIMINADO para que sea "alargado a lo ancho" */
-    width: 100%;        /* Ocupa el ancho del contenedor padre (.container > section) */
+  
+    width: 100%;   
     box-sizing: border-box;
     border: 1px solid #ddd;
-    padding: 12px 15px; /* CAMBIO: Padding vertical reducido a 12px, horizontal 15px */
+    padding: 12px 15px; 
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
@@ -189,8 +188,7 @@ h3 {
 
 .curso-cabecera {
  display: flex;
-    align-items: center; /* Mantiene la alineación vertical de imagen, título y botón */
-    /* gap: 15px; */    /* Eliminamos el gap general aquí para controlar espaciado individualmente */
+    align-items: center; 
     margin-bottom: 10px;
 }
 
@@ -199,26 +197,26 @@ width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 4px;
-    flex-shrink: 0; /* Evita que la imagen se encoja */
-    margin-right: 12px; /* Espacio entre la imagen y el título */
+    flex-shrink: 0; 
+    margin-right: 12px; 
 }
 
 .curso-cabecera h2 {
  margin: 0;
     font-size: 1.5em;
     line-height: 1.3;
-    color: #337ab7; /* O el color que tenías definido */
+    color: #337ab7; 
     text-align: left;
     font-weight: 700;
     transition: color 0.3s ease;
-    flex-grow: 1;     /* NUEVO: Hace que el título ocupe el espacio disponible, empujando el botón a la derecha */
-    margin-right: 10px; /* NUEVO: Espacio entre el final del título y el botón de toggle */
+    flex-grow: 1;    
+    margin-right: 10px; 
 }
 
 .curso p {
-    margin-bottom: 8px; /* CAMBIO: Reducido de 10px */
+    margin-bottom: 8px; 
     text-align: left;
-    line-height: 1.5; /* CAMBIO: Ligeramente reducido para compacidad */
+    line-height: 1.5; 
 }
 
 .curso-detalles p:last-of-type {
@@ -243,12 +241,12 @@ width: 60px;
 
 .curso-detalles.visible {
     max-height: 1000px;
-    margin-top: 10px;   /* CAMBIO: Reducido de 15px */
+    margin-top: 10px; 
     padding-bottom: 1px;
 }
 
 .btn {
-  display: inline-block; /* O block, según tu diseño */
+  display: inline-block; 
   padding: 10px 15px;
   background-color: #337ab7;
   color: white;
@@ -256,43 +254,37 @@ width: 60px;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
-  margin-top: 10px; /* Margen general para los botones */
+  margin-top: 10px; 
 }
 
 .btn:hover {
   background-color: #286090;
-  transform: translateY(-1px); /* Ligero efecto al pasar el mouse */
+  transform: translateY(-1px); 
 }
 
 .btn:active {
-  transform: translateY(0px); /* Efecto al hacer clic */
+  transform: translateY(0px); 
 }
 
 /* Estilos para los SVGs dentro de los botones */
 .btn svg {
-    display: block; /* Ayuda a eliminar espacios extraños que a veces tienen los elementos inline */
+    display: block; 
   margin: auto;
-    /* Los SVGs en tu HTML tienen width="20" height="20".
-       Para botones de 32x32, podrías considerar reducir el SVG a 16x16 o 18x18 en el HTML
-       para más espacio alrededor, o dejarlo en 20x20 si te gusta cómo se ve. */
+
 }
 
 /* === Botón para Mostrar/Ocultar Detalles (+ / -) === */
 .btn-toggle-detalles {
- /* Hereda los estilos de .btn (redondo, azul, tamaño 32x32, etc.) */
-    /* margin-top: 10px; */  /* ELIMINADO: Ya no necesita margen superior, se alinea con el título */
-    /* align-self: flex-end; */ /* ELIMINADO: Su posición ahora es dentro del flex de .curso-cabecera */
-    flex-shrink: 0;       /* NUEVO: Evita que el botón se encoja si el título es muy largo */
+
+    flex-shrink: 0;   
 }
 
 /* === Botón para Ingresar a la Capacitación (flecha) === */
 .btn-ingresar {
-    display: block; /* Mantenido para que use márgenes correctamente */
-    margin-top: 15px;    /* CAMBIO: Reducido de 20px */
-    margin-left: auto;   /* NUEVO: Empuja el botón a la derecha dentro de .curso-detalles */
-    margin-right: 0;     /* Asegura alineación derecha */
-    /* width: 32px; ya heredado de .btn */
-    /* height: 32px; ya heredado de .btn */
+    display: block; 
+    margin-top: 15px;   
+    margin-left: auto; 
+    margin-right: 0;    
 }
 
 
@@ -301,7 +293,6 @@ width: 60px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out;
-  /* Reseteamos márgenes/paddings para cuando está colapsado */
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 0;
@@ -309,30 +300,30 @@ width: 60px;
 }
 
 .curso-detalles.visible {
-  max-height: 1000px; /* Un valor suficientemente grande para el contenido */
-  margin-top: 15px;   /* Espacio entre .curso-cabecera y el contenido de .curso-detalles */
-  padding-bottom: 1px; /* Evita colapso de margen si el último hijo (ej. .btn-ingresar) tiene margen superior */
+  max-height: 1000px; 
+  margin-top: 15px;  
+  padding-bottom: 1px; 
 }
 
 
 .curso .btn {
-  display: inline-flex; /* Para alinear y centrar el SVG (icono) dentro del botón */
+  display: inline-flex; 
   align-items: center;
   justify-content: center;
   
   /* HACIÉNDOLOS MÁS CHICOS Y REDONDOS */
-  width: 34px;          /* Ancho fijo para controlar el tamaño */
-  height: 34px;         /* Alto fijo para controlar el tamaño */
-  padding: 0;           /* Quitamos padding; el tamaño lo dan width/height y el SVG se centra */
-  border-radius: 50%;   /* Esto los hace redondos */
+  width: 34px;         
+  height: 34px;        
+  padding: 0;           
+  border-radius: 50%; 
   
   background-color: #337ab7;
-  color: white;         /* El SVG heredará este color para su 'stroke' si usa 'currentColor' */
+  color: white;        
   text-decoration: none;
-  border: none;         /* Quita bordes por defecto */
+  border: none;        
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  line-height: 1;       /* Ayuda a la alineación vertical del SVG */
+  line-height: 1;      
 }
 
 .curso .btn:hover {
@@ -343,17 +334,15 @@ width: 60px;
 
 
 .btn-toggle-detalles {
-    margin-top: auto; /* Esto empujará el botón "Más Información" hacia abajo si es el último hijo directo de .curso y .curso es flex-column */
-    align-self: flex-start; /* Para alinearlo a la izquierda */
+    margin-top: auto; 
+    align-self: flex-start; 
 }
 
 /* El botón "Ingresar a la capacitación" está dentro de .curso-detalles */
 .btn-ingresar {
-    /* Ya no necesita 'display: block;' aquí, hereda 'inline-flex' de .btn,
-     lo que asegura que el SVG interno esté centrado. */
   margin-top: 15px;
-  align-self: flex-end; /* NUEVO: Alinea este botón a la derecha de su contenedor flex padre (.curso-detalles.visible) */ 
-    margin-left: auto;   /* NUEVO: Empuja el botón a la derecha dentro de .curso-detalles */
+  align-self: flex-end; 
+    margin-left: auto;  
 
 }
 
@@ -368,40 +357,29 @@ width: 60px;
 }
 
 .curso-detalles.visible {
-  max-height: 1000px; /* Ajusta si es necesario un valor mayor */
-  margin-top: 15px;   /* Espacio sobre los detalles */
-  padding-bottom: 15px; /* Espacio debajo del último elemento de los detalles (antes de que se cierre el div) */
-                          /* El botón "Más Información" está fuera de este div */
+  max-height: 1000px; 
+  margin-top: 15px;   
+  padding-bottom: 15px; 
 }
 
 /* Estilos para los SVGs dentro de los botones */
 .btn svg {
-  /* Los SVGs que te proporcioné tenían width="20" height="20".
-     Estos se centrarán bien en un botón de 34x34px.
-     Si deseas que el icono en sí sea más pequeño, ajusta los atributos
-     width y height directamente en la etiqueta <svg> de tu HTML
-     (por ejemplo, a width="18" height="18").
-     El atributo 'stroke="currentColor"' en el SVG es ideal para heredar el color.
-  */
+ 
 }
 
 /* === Botón para Mostrar/Ocultar Detalles (+ / -) === */
 .btn-toggle-detalles {
-  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
-  margin-top: auto;       /* Empuja este botón al final del contenedor .curso */
-  align-self: flex-start; /* Lo alinea a la izquierda */
+  margin-top: auto;      
+  align-self: flex-start; 
 }
 
 /* === Botón para Ingresar a la Capacitación (flecha) === */
 .btn-ingresar {
-  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
-  display: block;         /* Si quieres que ocupe su propia línea dentro de .curso-detalles */
-  /* width: fit-content; */ /* Esta propiedad es anulada por el width fijo de .btn para mantener la forma redonda. */
-  margin-top: 20px;       /* Espacio arriba de este botón, dentro de .curso-detalles */
-  margin-left: 0;         /* Alineado a la izquierda por defecto como bloque */
-  /* Si quisieras centrar este botón (que ahora es un círculo pequeño): */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
+
+  display: block;        
+  margin-top: 20px;       
+  margin-left: 0;         
+
 }
 
 
@@ -410,7 +388,7 @@ width: 60px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out;
-  /* Reseteamos márgenes/paddings para cuando está colapsado */
+ 
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 0;
@@ -418,48 +396,41 @@ width: 60px;
 }
 
 .curso-detalles.visible {
-  max-height: 1000px; /* Un valor suficientemente grande para el contenido */
-  margin-top: 15px;   /* Espacio entre .curso-cabecera y el contenido de .curso-detalles */
-  padding-bottom: 1px; /* Evita colapso de margen si el último hijo (ej. .btn-ingresar) tiene margen superior */
+  max-height: 1000px; 
+  margin-top: 15px;   
+  padding-bottom: 1px; 
 }
 
 
 .curso .btn {
-  display: inline-flex; /* Para alinear y centrar el SVG (icono) dentro del botón */
+  display: inline-flex; 
   align-items: center;
   justify-content: center;
-  
-  /* HACIÉNDOLOS MÁS CHICOS Y REDONDOS */
-  width: 34px;          /* Ancho fijo para controlar el tamaño */
-  height: 34px;         /* Alto fijo para controlar el tamaño */
-  padding: 0;           /* Quitamos padding; el tamaño lo dan width/height y el SVG se centra */
-  border-radius: 50%;   /* Esto los hace redondos */
+  width: 34px;          
+  height: 34px;         
+  padding: 0;           
+  border-radius: 50%;   
   
   background-color: #337ab7;
-  color: white;         /* El SVG heredará este color para su 'stroke' si usa 'currentColor' */
+  color: white;        
   text-decoration: none;
-  border: none;         /* Quita bordes por defecto */
+  border: none;         
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  line-height: 1;       /* Ayuda a la alineación vertical del SVG */
+  line-height: 1;       
 }
 
 .btn-toggle-detalles {
-  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
-  margin-top: auto;       /* Empuja este botón al final del contenedor .curso */
-  align-self: flex-start; /* Lo alinea a la izquierda */
+   
+  margin-top: auto;       
+  align-self: flex-start;
 }
 
 /* === Botón para Ingresar a la Capacitación (flecha) === */
 .btn-ingresar {
-  /* Hereda todos los estilos de .btn (incluyendo el nuevo tamaño y forma redonda) */
-  display: block;         /* Si quieres que ocupe su propia línea dentro de .curso-detalles */
-  /* width: fit-content; */ /* Esta propiedad es anulada por el width fijo de .btn para mantener la forma redonda. */
-  margin-top: 20px;       /* Espacio arriba de este botón, dentro de .curso-detalles */
-  margin-left: 0;         /* Alineado a la izquierda por defecto como bloque */
-  /* Si quisieras centrar este botón (que ahora es un círculo pequeño): */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
+  display: block;         
+  margin-top: 20px;       
+  margin-left: 0;
 }
 
 .curso .btn:hover {
@@ -554,8 +525,8 @@ footer {
 .hero {
     position: relative;
     width: 100%;
-    min-height: 500px; /* O la altura que desees */
-    overflow: hidden;  /* Oculta las imágenes que no se muestran */
+    min-height: 500px; 
+    overflow: hidden;  
     
 }
 
@@ -566,15 +537,11 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-
     /* Fondo negro con opacidad para oscurecer la imagen */
-    background: rgba(0, 0, 0, 0.9); /* Ajusta el 0.5 para mayor o menor oscuridad */
-
-    /* O puedes combinarlo con el degradado que ya tenías */
+    background: rgba(0, 0, 0, 0.9); 
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%);
-
-    z-index: 1;              /* Coloca la sombra *detrás* del contenido de .hero */
-    border-radius: inherit;  /* Hereda bordes redondeados, si los hay */
+    z-index: 1;              
+    border-radius: inherit;  
 }
 
 .hero-content {
@@ -602,25 +569,25 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0;        /* Inicialmente invisible */
-    transition: opacity 1.5s ease-in-out; /* Transición suave */
-    /*  Eliminamos la animación CSS  */
+    opacity: 0;    
+    transition: opacity 1.5s ease-in-out; 
+   
 }
 
 .hero-image.active {
-    opacity: 1;       /* Imagen activa visible */
+    opacity: 1;       
 }
 
 
 /* Estilos adicionales para el título, párrafo y botón (ajusta según tu diseño) */
 .hero-content h1 {
-    font-size: 3em;       /* Tamaño del título */
-    margin-bottom: 20px;   /* Espacio debajo del título */
+    font-size: 3em;       
+    margin-bottom: 20px;   
 }
 
 .hero-content p {
-    font-size: 1.2em;     /* Tamaño del párrafo */
-    margin-bottom: 30px;   /* Espacio debajo del párrafo */
+    font-size: 1.2em;    
+    margin-bottom: 30px;  
 }
 
 .hero h1 {
@@ -705,8 +672,7 @@ footer {
 
 /* --- Modo Oscuro --- */
 
-/* Estilos generales para modo oscuro (preferencia del sistema y manual) */
-/* --- Modo Oscuro (Preferencia del Sistema) --- */
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
@@ -721,7 +687,7 @@ footer {
         color: #fff;
     }
 
-    /* ...TODOS los demás estilos para el modo oscuro... */
+
      .curso p strong{
         color: #fff;
     }
@@ -731,7 +697,7 @@ footer {
     }
 
       nav a {
-        color: #fff; /* Color del texto en el modo oscuro */
+        color: #fff; 
     }
 
     nav a:hover {
@@ -777,7 +743,7 @@ footer {
     }
 
     .checkbox:checked + .slider::before {
-        background-color: #000;   /* Círculo negro (modo oscuro activo) */
+        background-color: #000;  
     }
       .toggle-icon-moon {
      color: #ffffff;
@@ -817,7 +783,7 @@ body.dark-mode a {
 }
 
 body.dark-mode nav a {
-     color: #fff; /* Color del texto en el modo oscuro */
+     color: #fff; 
 }
 
 
@@ -875,7 +841,7 @@ body.dark-mode .checkbox:checked + .slider::before {
 
 /* --- Media Queries (Responsive) --- */
 
-/* 📌 Para tablets y pantallas medianas */
+/* Para tablets y pantallas medianas */
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
@@ -910,10 +876,10 @@ body.dark-mode .checkbox:checked + .slider::before {
     }
 
     .info-grid {
-        grid-template-columns: 1fr; /* Secciones en una sola columna */
+        grid-template-columns: 1fr; 
     }
 
-    /* 📌 Footer responsivo */
+    /* Footer responsivo */
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -927,7 +893,7 @@ body.dark-mode .checkbox:checked + .slider::before {
     }
 
     .footer-logo img {
-        max-width: 150px; /* Ajuste del tamaño del logo */
+        max-width: 150px;
     }
     
     .dark-mode-toggle {
@@ -935,7 +901,7 @@ body.dark-mode .checkbox:checked + .slider::before {
     }
 }
 
-/* 📌 Para móviles pequeños */
+/* Para móviles pequeños */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2.2em;
@@ -957,12 +923,12 @@ body.dark-mode .checkbox:checked + .slider::before {
         grid-template-columns: 1fr;
     }
 
-    /* 📌 Footer en móviles */
+    /* Footer en móviles */
     .footer-content {
         text-align: center;
     }
 
     .footer-logo img {
-        max-width: 120px; /* Ajuste adicional para pantallas pequeñas */
+        max-width: 120px; 
     }
 }

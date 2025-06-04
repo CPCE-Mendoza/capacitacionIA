@@ -116,7 +116,7 @@ nav a:hover {
     background-color: #000;
 }
 
-.toggle-icon { /* Para los iconos de sol/luna textuales */
+.toggle-icon { 
     color: #ffffff;
     font-size: 1.2rem;
     user-select: none;
@@ -158,16 +158,15 @@ h3 {
 .curso-container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; NO es necesario si los .curso son width: 100% */
-    gap: 20px; /* Espacio vertical entre tarjetas */
+    gap: 20px; 
 }
 
 .curso {
-    /* max-width: 680px; */ /* ELIMINADO para que sea "alargado a lo ancho" */
-    width: 100%;        /* Ocupa el ancho del contenedor padre (.container > section) */
+  
+    width: 100%;      
     box-sizing: border-box;
     border: 1px solid #ddd;
-    padding: 12px 15px; /* CAMBIO: Padding vertical reducido a 12px, horizontal 15px */
+    padding: 12px 15px; 
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff;
@@ -183,8 +182,7 @@ h3 {
 
 .curso-cabecera {
  display: flex;
-    align-items: center; /* Mantiene la alineación vertical de imagen, título y botón */
-    /* gap: 15px; */    /* Eliminamos el gap general aquí para controlar espaciado individualmente */
+    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -193,26 +191,26 @@ width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 4px;
-    flex-shrink: 0; /* Evita que la imagen se encoja */
-    margin-right: 12px; /* Espacio entre la imagen y el título */
+    flex-shrink: 0; 
+    margin-right: 12px;
 }
 
 .curso-cabecera h2 {
  margin: 0;
     font-size: 1.5em;
     line-height: 1.3;
-    color: #337ab7; /* O el color que tenías definido */
+    color: #337ab7; 
     text-align: left;
     font-weight: 700;
     transition: color 0.3s ease;
-    flex-grow: 1;     /* NUEVO: Hace que el título ocupe el espacio disponible, empujando el botón a la derecha */
-    margin-right: 10px; /* NUEVO: Espacio entre el final del título y el botón de toggle */
+    flex-grow: 1;     
+    margin-right: 10px; 
 }
 
 .curso p {
-    margin-bottom: 8px; /* CAMBIO: Reducido de 10px */
+    margin-bottom: 8px; 
     text-align: left;
-    line-height: 1.5; /* CAMBIO: Ligeramente reducido para compacidad */
+    line-height: 1.5; 
 }
 
 .curso-detalles p:last-of-type {
@@ -237,7 +235,7 @@ width: 60px;
 
 .curso-detalles.visible {
     max-height: 1000px;
-    margin-top: 10px;   /* CAMBIO: Reducido de 15px */
+    margin-top: 10px;   
     padding-bottom: 1px;
 }
 
@@ -246,8 +244,8 @@ width: 60px;
     display:flex;
     align-items: center;
     justify-content: center;
-    width: 32px;    /* CAMBIO: Ligeramente más chico (era 34px) */
-    height: 32px;   /* CAMBIO: Ligeramente más chico (era 34px) */
+    width: 32px;   
+    height: 32px;  
     padding: 0;
     border-radius: 50%;
     background-color: #337ab7;
@@ -269,29 +267,20 @@ width: 60px;
 }
 
 .btn svg {
-    display: block; /* Ayuda a eliminar espacios extraños que a veces tienen los elementos inline */
+    display: block; 
   margin: auto;
-    /* Los SVGs en tu HTML tienen width="20" height="20".
-       Para botones de 32x32, podrías considerar reducir el SVG a 16x16 o 18x18 en el HTML
-       para más espacio alrededor, o dejarlo en 20x20 si te gusta cómo se ve. */
 }
 
 /* === Botón para Mostrar/Ocultar Detalles (+ / -) === */
 .btn-toggle-detalles {
- /* Hereda los estilos de .btn (redondo, azul, tamaño 32x32, etc.) */
-    /* margin-top: 10px; */  /* ELIMINADO: Ya no necesita margen superior, se alinea con el título */
-    /* align-self: flex-end; */ /* ELIMINADO: Su posición ahora es dentro del flex de .curso-cabecera */
-    flex-shrink: 0;       /* NUEVO: Evita que el botón se encoja si el título es muy largo */
+    flex-shrink: 0;       
 }
 
 /* === Botón para Ingresar a la Capacitación (flecha) === */
 .btn-ingresar {
-    /* Ya no necesita 'display: block;' aquí, hereda 'inline-flex' de .btn,
-     lo que asegura que el SVG interno esté centrado. */
   margin-top: 15px;
-  align-self: flex-end; /* NUEVO: Alinea este botón a la derecha de su contenedor flex padre (.curso-detalles.visible) */ 
-    margin-left: auto;   /* NUEVO: Empuja el botón a la derecha dentro de .curso-detalles */
-
+  align-self: flex-end; 
+    margin-left: auto;   
 }
 
 /* --- Estilos de los videos --- */
@@ -319,13 +308,12 @@ width: 60px;
     --boton-secundario-hover-color: #f0f0f0;
 }
 
-/* La clase .btn ya está definida arriba (azul) para los botones de curso.
-   Si necesitas botones con los colores de las variables, usa clases diferentes: */
-.btn-rojo { /* Ejemplo para un botón rojo */
-    display: inline-flex; /* Adaptado para consistencia si también llevan iconos */
+
+.btn-rojo { 
+    display: inline-flex; 
     align-items: center;
     justify-content: center;
-    padding: 10px 20px; /* Padding para botones con texto */
+    padding: 10px 20px; 
     background-color: var(--boton-color);
     color: #ffffff;
     border: none;
@@ -333,25 +321,25 @@ width: 60px;
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    line-height: 1; /* Si llevan SVG */
+    line-height: 1; 
 }
 .btn-rojo:hover {
     background-color: var(--boton-hover-color);
 }
 
 .btn-secundario {
-    display: inline-flex; /* Para consistencia */
+    display: inline-flex; 
     align-items: center;
     justify-content: center;
     background-color: var(--boton-secundario-color);
-    color: #fff; /* Color de texto en header (claro) */
-    border: 2px solid #fff; /* Borde blanco en header (claro) */
-    padding: 8px 21px; /* Ajustado ligeramente para que el alto total sea similar a .btn-rojo con borde */
+    color: #fff; 
+    border: 2px solid #fff;
+    padding: 8px 21px;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    line-height: 1; /* Si llevan SVG */
+    line-height: 1; 
 }
 
 .btn-secundario:hover {
@@ -401,10 +389,10 @@ footer {
 
 .footer-logo {
     display: flex;
-    justify-content: flex-end; /* Alineado a la derecha */
+    justify-content: flex-end; 
 }
 
-.footerlogo { /* Clase del img del logo del footer */
+.footerlogo { 
     max-width: 220px;
 }
 
@@ -417,7 +405,7 @@ footer {
     position: relative;
     width: 100%;
     min-height: 500px;
-    transition: background-image 0.3s ease; /* Transición para la imagen si cambia */
+    transition: background-image 0.3s ease;
 }
 
 .hero::before {
@@ -479,15 +467,13 @@ footer {
     font-size: 0.8em;
 }
 
-.hero .btn { /* Este .btn en el hero será azul por defecto. */
-             /* Si quieres el rojo, usa la clase .btn-rojo que definí como ejemplo. */
+.hero .btn { 
     margin-bottom: 25px;
-    /* Para que sea un botón con texto, no solo icono: */
-    width: auto; /* Anula el width fijo de .btn */
-    height: auto; /* Anula el height fijo de .btn */
-    min-width: 38px; /* Restaura min-width si es necesario */
-    min-height: 38px; /* Restaura min-height si es necesario */
-    padding: 10px 20px; /* Padding para botones con texto */
+    width: auto; 
+    height: auto; 
+    min-width: 38px; 
+    min-height: 38px; 
+    padding: 10px 20px; 
 }
 .hero .btn-secundario {
     color: #fff;
@@ -505,7 +491,7 @@ footer {
     padding: 80px 0;
     text-align: center;
     position: relative;
-    z-index: 1; /* Asegura que esté por encima de fondos generales si los hay */
+    z-index: 1; 
 }
 
 .info h2 {
@@ -545,7 +531,7 @@ footer {
     background-color: #f5f5f5;
     border-top: 1px solid #eee;
     position: relative;
-    z-index: 50; /* Para que esté por encima de otros elementos si es necesario */
+    z-index: 50; 
     transition: background-color 0.3s ease, border-top-color 0.3s ease, color 0.3s ease;
 }
 
@@ -588,7 +574,7 @@ footer {
         background-color: #1A1A1A;
         color: #ccc;
     }
-    footer .footer-info, footer .footer-social a, footer .footer-logo .footerlogo { color: #ccc; } /* Asegura que logo (si es SVG) y enlaces hereden */
+    footer .footer-info, footer .footer-social a, footer .footer-logo .footerlogo { color: #ccc; } 
     .hero::before {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
         box-shadow: inset 0px 0px 80px rgba(0, 0, 0, 0.7);
@@ -602,9 +588,9 @@ footer {
     }
     .slider { background-color: #666; }
     .slider::before { background-color: #f0f0f0; }
-    .checkbox:checked + .slider { background-color: #333; } /* Un poco más oscuro */
+    .checkbox:checked + .slider { background-color: #333; } 
     .checkbox:checked + .slider::before { background-color: #121212; }
-    .toggle-icon { color: #fff; } /* Iconos sol/luna en modo oscuro */
+    .toggle-icon { color: #fff; } 
 }
 
 body.dark-mode {
@@ -676,14 +662,14 @@ body.dark-mode .toggle-icon { color: #fff; }
     }
     .curso-imagen-container {
         width: 100%;
-        height: auto; /* Ajustado para mantener proporción de imagen del curso */
-        aspect-ratio: 16 / 9; /* O la proporción que tengan tus imágenes */
-        max-height: 220px; /* Límite de altura */
+        height: auto; 
+        aspect-ratio: 16 / 9; 
+        max-height: 220px; 
         margin-bottom: 15px;
-        border-radius: 6px; /* Unificar redondeo */
+        border-radius: 6px; 
     }
-    /* .curso-imagen { ya no se usa, el estilo va a .curso-imagen-container si es img o al img dentro */
-    .curso-imagen-container img { /* Si .curso-imagen-container es un div que envuelve la img */
+    
+    .curso-imagen-container img { 
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -700,7 +686,7 @@ body.dark-mode .toggle-icon { color: #fff; }
         margin-right: 0;
     }
     .footer-logo { justify-content: center; }
-    .footerlogo { max-width: 150px; } /* Clase del img del logo del footer */
+    .footerlogo { max-width: 150px; } 
     .dark-mode-toggle { margin: 10px auto; }
 }
 
@@ -708,12 +694,12 @@ body.dark-mode .toggle-icon { color: #fff; }
     .hero h1 { font-size: 2.2em; }
     .hero p { font-size: 1.1em; }
     .hero-content { padding: 40px 10px; }
-    h1 { font-size: 2.5em; } /* Ajuste más agresivo para móviles */
-    h2 { font-size: 1.6em; } /* Ajuste más agresivo para móviles */
+    h1 { font-size: 2.5em; } 
+    h2 { font-size: 1.6em; }
     .curso-cabecera h2 { font-size: 1.2em; }
     h3 { font-size: 1.4em; }
     .curso-imagen-container {
-        max-height: 180px; /* Más pequeño en móviles */
+        max-height: 180px; 
     }
     .footerlogo { max-width: 120px; }
 }
